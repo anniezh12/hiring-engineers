@@ -111,7 +111,10 @@ a. In conf.d I created a file name custom-check.yaml
                 instances:
                     [{}]
           </code>              
-        [images/collecting-metrics/custom-check-yaml-file.png]        
+        [images/collecting-metrics/custom-check-yaml-file.png]
+
+
+#Got an error message in my custom-check.py file [custom-check-error-later-version] //note I encountered this error while I was re doing everything again from scratch using above steps, It appeared that the error was due to indentation of block when once fixed, it started showing me custom checks as expected.   
 
 b. In checks.d I created a file custom-check.py
   the checks inherits from the AgentCheck class, I also import random class to be able to generate a random number to be passed through metric, "my_metric"
@@ -126,11 +129,18 @@ b. In checks.d I created a file custom-check.py
       [images/collecting-metrics/custom-check-py-file.png]
   Finally you can stop and restart the agent to see the checks being added
         [images/collecting-metrics/custom-check.png]
+
 #----------------------------------------------------------------------------
 
 Q. Change your check's collection interval so that it only submits the metric once every 45 seconds?
 
-Simply add the min_collection_interval to 45 in the custom-check.yaml file(since I am using Agent V6,for v5 its slightly different)
+We can add min_collection_interval to help define how often the check should be run globally by Agent. If it is greater than the interval time for the Agent collector, a line is added to the log stating that collection for this script was skipped. The default is 0 which means it’s collected at the same interval as the rest of the integrations on that Agent.
+
+ If the value is set to 45, it does not mean that the metric is collected every 45 seconds, but rather that it could be collected as often as every 45 seconds.
+
+In Agent 6, min_collection_interval must be added at an instance level, and can be configured individually for each instance.
+
+Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I am using Agent V6,for v5 its slightly different). now Agent will collect
 
 <code>
       init_config:
@@ -147,29 +157,30 @@ To see my custom check rum the following command in terminal
      sudo -u dd-agent -- datadog-agent check custom-check
 
 [images/collecting-metrics/running-custom-check.png]
+[status-showing-tags-and-mysql.png] // This image is from second time setting up system
 
-Challenges: There were not many issues with this section since the documentation was very clear and less ambiguous.
- Only one thing which is not clear is that the Agent by default collects data every 20 second and encounters all the checks as well so if we provide 45 seconds for our custom check, it will first check at the first 20th second and will find that the minimal interval is 45 so it will wait and will check again at 40th second and will wait again but next time when it will check it will be at 60th second and the one after that will be at the 100th second.
-#-----------------------------------------------------------------------------------
- I am not sure if we can change minimum interval by changing code other than .py file. In Agent v5 we can specify it in the yaml file though.  
+-----------------------------------------------------------------------------------
 
+ Yes, since we can specify our custom collection interval in the YAML and not in the Python file.
 
-                          #-------------------------#
+                          -------------------------
                                VISUALIZING DATA
-                          #-------------------------#
+                          -------------------------
 
 Utilize the Datadog API to create a Timeboard that contains:
      a. Your custom metric scoped over your host.
      b. Any metric from the Integration on your Database with the anomaly function applied.
      c. Your custom metric with the rollup function applied to sum up all the points for the past hour into one bucket
 #-----------------------------------------------------------------------------------
-I created a gem for this problem using Bundler and inside my hiring-engineers repo, created a ruby gem with the following command
+I created a ruby app for this problem using Bundler inside my hiring-engineers repo, created a ruby gem with the following command
        a. bundle gem codingruby
        b. once a gem is being created I added the following two gems in the Gemfile
              gem 'dogapi'
              gem 'dogstatsd-ruby'
+        run 'bundle install' to install the above gems
        c. Inside lib folder I have now a file codingruby.rb where I will place my code.
-       After figuring out about api_key and app_key, in order to make Api calls
+      Goto to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
+      [images/visualizing-data/api_app_key.png]
 
 After looking into related datadogs api endpoint which help create , update delete and query Timeboards.
  And it has the following arguments
@@ -186,8 +197,10 @@ After looking into related datadogs api endpoint which help create , update dele
     A post request is being made to "https://api.datadoghq.com/api/v1/dash"
 
   Create a ruby file and add the following code in it
-  [get api_key, app_key from your datadog account in integration/APIs, you have to generate app_key on that page as well ]
+  [use api_key and app_key inside ruby file  ]
      [images/visualizing-data/ruby-file-api-call.png]
+
+     In Order to create a timeboard I consulted the following resource link
     [ https://docs.datadoghq.com/integrations/mysql/#metrics] [resource for finding mysql functions]
 
  see code in [code/timeboard-creation.rb]
@@ -279,7 +292,6 @@ after saving the above code simply run in your terminal
   images/visualizing-data/getting-custom-metric.png     
   [images/visualizing-data/rollup-function-applied-to-custom-metric.png]
 
-  Final Link:[https://app.datadoghq.com/dash/876163/my-metrics?live=true&page=0&is_auto=false&from_ts=1533067617315&to_ts=1533071217315&tile_size=m]
 
   #----------------------------------------------------------------------------
     a. Set the Timeboard's timeframe to the past 5 minutes
@@ -289,7 +301,9 @@ after saving the above code simply run in your terminal
     b. Take a snapshot of this graph and use the @ notation to send it to yourself.
 
     Now I clicked one of the graph and clicked camera and wrote a message an used @myemail@yahoo.com and pressed enter I recieved a full board with the graph I picked more visible.
-    [images/visualizing-data/email-sending.png]
+
+     [images/visualizing-data/email-sending.png]
+     [images/visualizing-data/email-showing-graph.png]
 
   Bonus Question: What is the Anomaly graph displaying?
     Anomaly detection is a strategy to see whats normal and whats not.
@@ -297,9 +311,9 @@ after saving the above code simply run in your terminal
     we can clearly spot that the mysql performance cpu time against system time was most of the time out of normal range(In light blue)
     and was represented with red color.
 
-                               #--------------------------------#
+                               --------------------------------
                                        Monitoring Data
-                               #--------------------------------#
+                               --------------------------------
    Create a new Metric Monitor that watches the average of your custom metric (my_metric) and will alert if it’s above the following values over the past 5 minutes:
            Warning threshold of 500
            Alerting threshold of 800
@@ -341,7 +355,7 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
           once saved, can be viewed by selecting it in the manage downtime window as shown in the following picture
                [images/monitoring-data/downtime-scheduled.png]
 
-                #-------------------------------#
+                -------------------------------
 
       b. And one that silences it all day on Sat-Sun.
 
@@ -352,10 +366,11 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
           I had to do some calculations since my Friday downtime will start at 7:pm and will stay until Saturday morning so I started the weekend downtime from 9:00 am Saturday and specify a duration of 48 hours.
 
              [images/monitoring-data/downtime-weekend-2.png]
-               #-----------------------------------#
+               -----------------------------------
 
       c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
-          I haven't received any email yet since it will email me when downtime starts.
+          I received email notification [images/monitoring-data/email-notification-of-daily-downtime.png].
+               [images/monitoring-data/email-notification-of-weekend-downtime.png].
                [images/monitoring-data/active-downtime.png]
 
                                #----------------------------------#

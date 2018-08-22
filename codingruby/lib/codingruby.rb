@@ -1,10 +1,10 @@
-require "codingruby/version"
+#require "codingruby/version"
 require 'rubygems'
 require 'dogapi'
 module Codingruby
 
-  api_key = "476d1be45bf39e3c37d842cb5449cc2b"
-  app_key = "24d5357e506a01822cc445fad4a23e693ab0fa24"
+  api_key = "a7ade58059a3c87cdfffa4648fdd5fc6"
+  app_key = "2d799e3a5aebd9b26f99bd297f765301059f87fb"
 
   dog = Dogapi::Client.new(api_key, app_key)
 
