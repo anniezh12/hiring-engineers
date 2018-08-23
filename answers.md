@@ -386,19 +386,14 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
 
     The Ruby APM tracer sends trace data through the Datadog Agent
 
-   1. added "gem 'ddtrace'" in the gem file and then install it using " $ bundle install"
+   1. Go to datadog account and navigate to APM, choose docs and select framework for example I chose 'Rails'
+   [images/collecting-apm-data/configuring-apm-using-rails.png]
 
-   2. Create a file datadog.rb in config/initializers and add the following code
-       <code>
+   I follow the instruction as follows
+   a. added "gem 'ddtrace'" in the gem file and then install it using " $ bundle install"
 
-       Datadog.configure do |c|
-         c.use :rails #this will activate auto-instruction for Rails
-       end
-
-</code>
-
-   3. created a datadog-tracer.rb file in  config/initializers, and put the following code in it
-
+  b. created a datadog-tracer.rb file in  config/initializers, and put the following code in it
+        <code>
          Rails.configuration.datadog_trace = {
            auto_instrument: true,
            auto_instrument_redis: true,
@@ -406,13 +401,29 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
            tracer: Datadog.tracer
 
          }
+         </code>
+         [images/collecting-apm-data/datadog-tracer-rb-file.png]
 
-         see code in [code/ddtrace-initializer.rb]
+        You can see code in [DataDogApmRails/initializers/datadog-tracer.rb]
 
-  4. In datadog-agent/datadog.yaml remove the comment from
+  c. In datadog-agent/datadog.yaml remove the comment from
 
-      apm_config:
-      enabled:true
+     <code>
+              apm_config:
+              enabled:true
+      </code>
+
+  2.  I also created a controller using
+      $rails g controller welcome
+      which provided me a controllers/welcome_controller.rb and  views
+      I defined index action in the welcome_controller.rb and then created a related index.html.erb file with some simple text in it.
+
+     See code in [DataDogApmRails/app/controllers/welcome_controller.rb]
+
+  3. Also defined routes in [DataDogApmRails/config/routes.rb]
+     Finally I ran the rails server by '$ rails s'  and went back to my datadog account to see the changes.
+
+
 
     Challenge
     even though I have followed the instructions but still cannot see any service provided by Apm
