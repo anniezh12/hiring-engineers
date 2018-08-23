@@ -1,4 +1,4 @@
-#require "codingruby/version"
+require "codingruby/version"
 require 'rubygems'
 require 'dogapi'
 module Codingruby

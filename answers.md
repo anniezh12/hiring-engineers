@@ -372,6 +372,8 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
           I received email notification [images/monitoring-data/email-notification-of-daily-downtime.png].
                [images/monitoring-data/email-notification-of-weekend-downtime.png].
                [images/monitoring-data/active-downtime.png]
+               [images/monitoring-data/warning-alert.png]
+               [images/monitoring-data/daily-monitor-showing-last-fifteen-minutes-before-downtime.png]
 
                                #----------------------------------#
                                      Collecting APM Data:
@@ -379,10 +381,23 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
     Given the following Flask app (or any Python/Ruby/Go app of your choice) instrument this using Datadog’s APM solution.
 
    This was little confusing for me I tried to integrate it in my ruby folder but it didn't work , next I created a rails app in my directory and follow the documentation provided
-         rails new DataDogApmRails
-   1. added "gem 'ddtrace'" in the gem file and then install it using bundle install
 
-   2. created a datasog-tracer.rb file in  config/initializers, and put the following code in it
+         $ rails new DataDogApmRails #will create a rails app
+
+    The Ruby APM tracer sends trace data through the Datadog Agent
+
+   1. added "gem 'ddtrace'" in the gem file and then install it using " $ bundle install"
+
+   2. Create a file datadog.rb in config/initializers and add the following code
+       <code>
+
+       Datadog.configure do |c|
+         c.use :rails #this will activate auto-instruction for Rails
+       end
+
+</code>
+
+   3. created a datadog-tracer.rb file in  config/initializers, and put the following code in it
 
          Rails.configuration.datadog_trace = {
            auto_instrument: true,
@@ -394,7 +409,7 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
 
          see code in [code/ddtrace-initializer.rb]
 
-  3. In datadog-agent/datadog.yaml remove the comment from
+  4. In datadog-agent/datadog.yaml remove the comment from
 
       apm_config:
       enabled:true
