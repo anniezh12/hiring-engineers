@@ -1,0 +1,87 @@
+/usr/bin/ruby2.2 -r ./siteconf20180824-24949-dbuold.rb extconf.rb
+checking if the C compiler accepts ... yes
+Building nokogiri using packaged libraries.
+Using mini_portile version 2.3.0
+checking for gzdopen() in -lz... yes
+checking for iconv... yes
+************************************************************************
+IMPORTANT NOTICE:
+
+Building Nokogiri with a packaged version of libxml2-2.9.8
+with the following patches applied:
+	- 0001-Revert-Do-not-URI-escape-in-server-side-includes.patch
+
+Team Nokogiri will keep on doing their best to provide security
+updates in a timely manner, but if this is a concern for you and want
+to use the system library instead; abort this installation process and
+reinstall nokogiri as follows:
+
+    gem install nokogiri -- --use-system-libraries
+        [--with-xml2-config=/path/to/xml2-config]
+        [--with-xslt-config=/path/to/xslt-config]
+
+If you are using Bundler, tell it to use the option:
+
+    bundle config build.nokogiri --use-system-libraries
+    bundle install
+
+Note, however, that nokogiri is not fully compatible with arbitrary
+versions of libxml2 provided by OS/package vendors.
+************************************************************************
+Extracting libxml2-2.9.8.tar.gz into tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.8... OK
+Running git apply with /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.8.4/patches/libxml2/0001-Revert-Do-not-URI-escape-in-server-side-includes.patch... ERROR, review '/home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/nokogiri-1.8.4/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports/libxml2/2.9.8/patch.log' to see what happened. Last lines are:
+========================================================================
+error: Malformed value for push.default: matchin
+error: Must be one of nothing, matching, simple, upstream or current.
+fatal: bad config variable 'push.default' in file '/root/.gitconfig' at line 5
+========================================================================
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/usr/bin/$(RUBY_BASE_NAME)2.2
+	--help
+	--clean
+	--use-system-libraries
+	--enable-static
+	--disable-static
+	--with-zlib-dir
+	--without-zlib-dir
+	--with-zlib-include
+	--without-zlib-include=${zlib-dir}/include
+	--with-zlib-lib
+	--without-zlib-lib=${zlib-dir}/lib
+	--enable-cross-build
+	--disable-cross-build
+/home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:402:in `block in execute': Failed to complete patch task (RuntimeError)
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:373:in `chdir'
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:373:in `execute'
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:76:in `block in apply_patch'
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:86:in `call'
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:86:in `apply_patch'
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:92:in `block in patch'
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:90:in `each'
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:90:in `patch'
+	from /home/aniqa/Desktop/code/labs/hiring-engineers/DataDogApmRails/vendor/bundle/ruby/2.2.0/gems/mini_portile2-2.3.0/lib/mini_portile2/mini_portile.rb:152:in `cook'
+	from extconf.rb:365:in `block (2 levels) in process_recipe'
+	from extconf.rb:257:in `block in chdir_for_build'
+	from extconf.rb:256:in `chdir'
+	from extconf.rb:256:in `chdir_for_build'
+	from extconf.rb:364:in `block in process_recipe'
+	from extconf.rb:262:in `tap'
+	from extconf.rb:262:in `process_recipe'
+	from extconf.rb:551:in `<main>'
+
+extconf failed, exit code 1
