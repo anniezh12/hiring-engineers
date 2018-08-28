@@ -1,15 +1,12 @@
 
 
-                                -------------------------
-                                   COLLECTING METRICS
-                                -------------------------
 
-Operating System: GMU/Linux (Ubunto 64-bit)/ Oracle VM VirtualBox
+                                   ##COLLECTING METRICS
+
+Operating System: GNU/Linux (Ubunto 64-bit)/ Oracle VM VirtualBox
 Agent: Datadog Agent: v6.3.3
 
-Setting Up Datadog Account and installing Agent on the local machine
-
-  -----------------------------------------------------------
+                          ##Setting Up Datadog Account and installing Agent on the local machine
 
 https://app.datadoghq.com/signup create a free Account.
 
