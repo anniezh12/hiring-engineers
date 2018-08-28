@@ -21,7 +21,7 @@ Get the other command to upgrade it which is specified in step 2.
 
  Now navigate to the datadog account where you can see the dashboard[link] appear in Events[menu option]
 
- [images/collecting-metrics/datadog-dashboard.png]
+ ![datadog dashboard](images/collecting-metrics/datadog-dashboard.png)
 
  ----------------------------------------------------------
                     IMPORTANT TERMINAL COMMANDS
@@ -45,12 +45,12 @@ root@aniqa/etc/datadog-agent://# nano datadog.yaml
 scroll down all the way where you can see "tags:" and
 uncomment it. Here one can add tags(predefined or custom), ideally key-value pair like region:east etc
 
-[images/collecting-metrics/tag-assignment-datadog-yaml.png]
+![assigning tags in YAML file](images/collecting-metrics/tag-assignment-datadog-yaml.png)
 
 Then go back to the datadog account and navigate to
 infrastructure/Host Map and you can see all the tags that I just defined in yaml file
 
-[images/collecting-metrics/tagsOnHostMap.png]
+![tags on datadog account](images/collecting-metrics/tagsOnHostMap.png)
 
 Challenges: I was unable to see the tags after configuring them in the yaml file initially but after a couple of attempts they appeared.
 
@@ -63,10 +63,9 @@ Mysql Installation in the terminal
      2. $ sudo apt-get install mysql # provide   password
      3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
      4. Inside datadog account navigate to integrations menu option and select "mysql" It shows all the steps to integrate mysql on the local environment.
-     Following steps provide I need to grant some privileges to Agent to collect metrics, which can be done by the following
 
              a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
-                   [settingPrevillagesInMysql.png]
+                   ![setting mysql](images/settingPrevillagesInMysql.png)
              b. mysql> GRANT PROCESS ON *.* TO 'datadog'@'localhost';
                    [settingPrevillages2.png]
              c. mysql> show databases like 'performance_schema'
@@ -90,7 +89,7 @@ Mysql Installation in the terminal
                         galera_cluster: 1
         </code>                  
 
-             [mysql-yaml.png]
+             ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
    8. Restart the agent and check the status and you can see
        mysql has been integrated.
 
