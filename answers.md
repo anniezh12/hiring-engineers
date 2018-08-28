@@ -16,8 +16,8 @@ I picked Ubuntu(pick one depending on your system)
 Copy and paste the "One-Step Install" command in your terminal root directory and press <Enter>
 It will take some time to install it on your system, once Installed
 Get the other command to upgrade it which is specified in step 2.
-
- ![Image dd](images/collecting-metrics/ddagent.png) - Image showing Datadog Agent installed and Running
+   ###### Image showing Datadog Agent installed and Running
+ ![Image showing Datadog Agent](images/collecting-metrics/ddagent.png)  
 
  Now navigate to the datadog account where you can see the dashboard[link] appear in Events[menu option]
 
