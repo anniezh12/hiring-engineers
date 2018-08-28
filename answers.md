@@ -1,12 +1,12 @@
 
 
 
-                                   ##  COLLECTING METRICS
+                                   ## COLLECTING METRICS
 
 Operating System: GNU/Linux (Ubunto 64-bit)/ Oracle VM VirtualBox
 Agent: Datadog Agent: v6.3.3
 
-                          ##  Setting Up Datadog Account and installing Agent on the local machine
+                          ## Setting Up Datadog Account and installing Agent on the local machine
 
 https://app.datadoghq.com/signup create a free Account.
 
@@ -17,7 +17,7 @@ Copy and paste the "One-Step Install" command in your terminal root directory an
 It will take some time to install it on your system, once Installed
 Get the other command to upgrade it which is specified in step 2.
 
- [images/collecting-metrics/ddagent.png] - Image showing Datadog Agent installed and Running
+ ![Image dd](images/collecting-metrics/ddagent.png) - Image showing Datadog Agent installed and Running
 
  Now navigate to the datadog account where you can see the dashboard[link] appear in Events[menu option]
 
