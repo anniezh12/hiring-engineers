@@ -93,8 +93,8 @@ Mysql Installation in the terminal
    8. Restart the agent and check the status and you can see
        mysql has been integrated.
 
-       [images/collecting-metrics/mysql-configured-correctly.png]
-       [images/collecting-metrics/dashboard-after-mysql-integration.png]
+       ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
+      ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
 
       Challenges:
           + This section took me a lot of time each time when I have to restart the agent after writing code in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
@@ -110,7 +110,7 @@ Mysql Installation in the terminal
        b. /etc/datadog-agent/checks.d
 
 a. In conf.d I created a file name custom-check.yaml
-    [images/collecting-metrics/custom-check.yaml]
+    ![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
     and simply added the following code
        <code>
                 init_config:
@@ -118,10 +118,14 @@ a. In conf.d I created a file name custom-check.yaml
                 instances:
                     [{}]
           </code>              
-        [images/collecting-metrics/custom-check-yaml-file.png]
+        ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
 
 
-#Got an error message in my custom-check.py file [images/collecting-metrics/custom-check-error-later-version] //note I encountered this error while I was re doing everything again from scratch using above steps, It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
+#Got an error message in my custom-check.py file
+
+![mysql configured](images/collecting-metrics/custom-check-error-later-version)
+
+ // Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
 
 b. In checks.d I created a file custom-check.py
   the checks inherits from the AgentCheck class, I also import random class to be able to generate a random number to be passed through metric, "my_metric"
