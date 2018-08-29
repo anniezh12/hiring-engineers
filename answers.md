@@ -324,76 +324,82 @@ after saving the above code simply run in your terminal
 
     Now I clicked one of the graph and clicked camera, wrote a message, used @myemail@yahoo.com and pressed enter. I recieved a full board, with the graph I picked, more visibly.
 
-     [images/visualizing-data/email-sending.png]
-     [images/visualizing-data/email-showing-graph.png]
+     ![email](images/visualizing-data/email-sending.png)
+     ![email 2](images/visualizing-data/email-showing-graph.png)
 
   Bonus Question: What is the Anomaly graph displaying?
     Anomaly detection is a strategy to see whats normal and whats not.
-    Any abnormal changes whether they are high in value or low are shown on anomaly graph as red. Anomaly detection functions evaluate on the basis of trends and set a range on the basis of past events(range shown in light blue area). For example have a look at [images/visualizing-data/anomaly-summary.png]
+    Any abnormal changes whether they are high in value or low are shown on anomaly graph as red. Anomaly detection functions evaluate on the basis of trends and set a range on the basis of past events(range shown in light blue area). For example have a look at ![](images/visualizing-data/anomaly-summary.png)
     we can clearly spot that the mysql performance cpu time against system time was most of the time out of normal range(In light blue)
     and was represented with red color.
 
-                               --------------------------------
-                                       Monitoring Data
-                               --------------------------------
+
+                                       ##Monitoring Data
+
    Create a new Metric Monitor that watches the average of your custom metric (my_metric) and will alert if it’s above the following values over the past 5 minutes:
            Warning threshold of 500
            Alerting threshold of 800
            And also ensure that it will notify you if there is No Data for this query over the past 10m.
 
 Ans.  This was an easy part all I did to go to dashboard and clicked settings button on the graph showing my_metric and chose
-  "create monitor" [images/monitoring-data/create-monitor.png] option a new window popped up, I added values
-
+  "create monitor" option a new window popped up,
+  ![creating monitor](images/monitoring-data/create-monitor.png)  
+```
+  I added values
          a. Alert threshold : 800
          b. Warning threshold: 500
          c. chose "Notify"if data is missing for more than "10"(added 10 in the textbox) minutes  
+```
+        ![adding alert threshold](images/monitoring-data/selecting-values.png)
 
-         [images/monitoring-data/selecting-values.png]
-
-   Please configure the monitor’s message so that it will:
+  ### Please configure the monitor’s message so that it will:
          Send you an email whenever the monitor triggers.
          Create different messages based on whether the monitor is in an Alert, Warning, or No Data state.
          Include the metric value that caused the monitor to trigger and host ip when the Monitor triggers an Alert state.
          When this monitor sends you an email notification, take a screenshot of the email that it sends you.
-       -----------------------------------------------------------------------------------------------------
 
     For this section I used predefined tags like {{#is_warning}}Appropriate message{{/#is_warning}}
 
-       [images/monitoring-data/monitor-msgs.png]
-       Moreover, I also selected my name in "Notify your team"
-       [images/monitoring-data/monitor.png]
+       ![monitor messages](images/monitoring-data/monitor-msgs.png)
+
+       Moreover, I also selected my name in `Notify your team`
+
+       ![monitor](images/monitoring-data/monitor.png)
     We can see this monitor by going to monitors and clicking the monitor you want to see
 
-    [images/monitoring-data/monitor-list.png]
-    [images/monitoring-data/monitor-events.png]
-    [images/monitoring-data/monitor-ui-list.png]
+    ![monitors list](images/monitoring-data/monitor-list.png)
 
-    Moreover, Alerts will also appear on the dashboard as well
-    [images/monitoring-data/dashboard-showing-warning.png]
+    ![monitor events](images/monitoring-data/monitor-events.png)
 
-    -----------------------------------------------------------------------------------------------------
-    Bonus Question: Since this monitor is going to alert pretty often, you don’t want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
+    ![monitor ui list](images/monitoring-data/monitor-ui-list.png)
 
-      a. One that silences it from 7pm to 9am daily on M-F,
+    Moreover, Alerts will also appear on the dashboard.
+
+    ![warnings on dashboard](images/monitoring-data/dashboard-showing-warning.png)
+
+
+    ### Bonus Question: Since this monitor is going to alert pretty often, you don’t want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
+
+    >  a. One that silences it from 7pm to 9am daily on M-F,
           Simply go to Monitors and click on "Manage Downtime"
-              [images/monitoring-data/downtime-selected.png]
+              ![downtime](images/monitoring-data/downtime-selected.png)
+
           once saved it can be viewed by selecting it in the manage downtime window as shown in the following picture
-               [images/monitoring-data/downtime-scheduled.png]
+               ![downtime schedule](images/monitoring-data/downtime-scheduled.png)
 
-                -------------------------------
 
-      b. And one that silences it all day on Sat-Sun.
+      >b. And one that silences it all day on Sat-Sun.
 
-         I created another downtime event as follows,
+         I created another downtime event as followed,
 
-            [images/monitoring-data/downtime-weekend.png]
+            ![weekend downtime](images/monitoring-data/downtime-weekend.png)
 
           I had to do some calculations since my Friday downtime will start at 7:pm and will stay until Saturday morning so I started the weekend downtime from 9:00 am Saturday and specified a duration of 48 hours.
 
-             [images/monitoring-data/downtime-weekend-2.png]
+             ![downtime weekend][images/monitoring-data/downtime-weekend-2.png]
                -----------------------------------
 
-      c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
+      >c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
           I received email notification
 
                [images/monitoring-data/email-notification-of-daily-downtime.png].
