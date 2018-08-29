@@ -23,17 +23,15 @@ Get the other command to upgrade it which is specified in step 2.
 
  ![datadog dashboard](images/collecting-metrics/datadog-dashboard.png)
 
- ----------------------------------------------------------
+ ```
                     IMPORTANT TERMINAL COMMANDS
-        1. sudo datadog-agent status # will show current status of our Agent
-        2. systemctl start datadog-agent # will start our Agent
-        3. systemctl stop datadog-agent # will stop our Agent
-      NOTE: I have used <code></code> to show the code only, this tag is not meant to be included in the actual code  
+        1. sudo datadog-agent status # will show current status of the Agent
+        2. systemctl start datadog-agent # will start the Agent
+        3. systemctl stop datadog-agent # will stop the Agent
 
+```
 
- ----------------------------------------------------------
-
- Q1.Add tags in the Agent config file and show us a screen shot of your host and its tags on the Host Map page in Datadog.
+>  Q1.Add tags in the Agent config file and show us a screen shot of your host and its tags on the Host Map page in Datadog.
 
 In the terminal switch to super user(since I installed Datadog agent as super user i.e su)
  ```
@@ -58,13 +56,14 @@ infrastructure/Host Map and you can see all the tags that I just defined in yaml
 
 -----------------------------------------------------------
 
-Q. Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database?
+> Question. Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database?
 
 Mysql Installation in the terminal
-     1. sudo su [provide password]
-     2. $ sudo apt-get install mysql # provide   password
+```
+     1. sudo su [provide password]     
+     2. $ sudo apt-get install mysql
      3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
-     4. Inside datadog account navigate to integrations menu option and select "mysql" It shows all the steps to integrate mysql on the local environment.
+     4. Inside datadog account I navigated to `integrations` menu option and select `mysql` It shows all the steps to integrate mysql in the local environment.
 
              a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
                    ![setting mysql](images/settingPrevillagesInMysql.png)
@@ -76,7 +75,6 @@ Mysql Installation in the terminal
 
 7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
 
-    ```
           init_config:
 
                 instances:
@@ -89,25 +87,24 @@ Mysql Installation in the terminal
                     options:
                         replication: 0
                         galera_cluster: 1
-      ```                  
+
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
-   8. Restart the agent and check the status and you can see
+   8. I restarted the agent and check the status was able to see that
        mysql has been integrated.
 
        ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
       ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
-
-      Challenges:
+```
+      >Challenges:
           + This section took me a lot of time each time when I have to restart the agent after writing code in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
           I later realized that it was due to me using Agent v5 and not upgrading it. Once I upgraded everything started working smoothly.
           + I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them It got configured correctly.
 
-          ----------------------------------------------------------------------
 
-    Q. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
+    Question. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
 
-    Adding a custom check was quite simple I just had to create two files in the following two folders. One important thing is to give the same name to both files.
+    Adding a custom check was quiet simple I just had to create two files in the following two folders. One important thing is to give the same name to both files.
        a. /etc/datadog-agent/conf.d
        b. /etc/datadog-agent/checks.d
 
@@ -153,7 +150,7 @@ We can add min_collection_interval to help define how often the check should be 
 
 In Agent 6, min_collection_interval must be added at an instance level, and can be configured individually for each instance.
 
-Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I am using Agent V6,for v5 its slightly different). now Agent will collect
+Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I am using Agent V6,for v5 its slightly different).
 
 ```
       init_config:
@@ -311,16 +308,17 @@ after saving the above code simply run in your terminal
 
   Now go back to datadog agent and you can see a new timeboard.
 
-  [images/visualizing-data/timeboard-created.png]
-  [images/visualizing-data/custom-timeboard-created-from-ruby-file.png]
-  images/visualizing-data/getting-custom-metric.png     
-  [images/visualizing-data/rollup-function-applied-to-custom-metric.png]
+  ![Timeboard created](images/visualizing-data/timeboard-created.png)
+  ![ruby code to create timeboard ](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
+  ![custom metric](images/visualizing-data/getting-custom-metric.png)     
+  ![rollup function]([images/visualizing-data/rollup-function-applied-to-custom-metric.png)
 
 
-  ----------------------------------------------------------------------------
+
     a. Set the Timeboard's timeframe to the past 5 minutes
+
     This part is quite easy, just go to dashboard and move the graph pointer to 5 minutes before.
-    [images/visualizing-data/timeboard-five-min-ago.png]
+    ![Timeboard created]([images/visualizing-data/timeboard-five-min-ago.png]
 
     b. Take a snapshot of this graph and use the @ notation to send it to yourself.
 
@@ -424,7 +422,7 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
    a. added "gem 'ddtrace'" in the gem file and then install it using " $ bundle install"
 
   b. created a datadog-tracer.rb file in  config/initializers, and put the following code in it
-        <code>
+      ```
          Rails.configuration.datadog_trace = {
            auto_instrument: true,
            auto_instrument_redis: true,
@@ -432,17 +430,18 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
            tracer: Datadog.tracer
 
          }
-         </code>
+      ```   
+
          [images/collecting-apm-data/datadog-tracer-rb-file.png]
 
         Code in [DataDogApmRails/initializers/datadog-tracer.rb]
 
   c. In datadog-agent/datadog.yaml remove the comment from
 
-     <code>
+     ```
               apm_config:
               enabled:true
-      </code>
+     ```
 
   2.  I also created a controller using
       $ rails g controller welcome
