@@ -35,13 +35,15 @@ Get the other command to upgrade it which is specified in step 2.
 
  Q1.Add tags in the Agent config file and show us a screen shot of your host and its tags on the Host Map page in Datadog.
 
- In the terminal
- sudo su [and provide password]
- root@aniqa://#cd /etc/datadog-agent/
- once in datadog-agent open datadog.yaml file
-
+In the terminal switch to super user(since I installed Datadog agent as super user i.e su)
+ ```
+ ~$ sudo su [and provide password]
+ ~$ cd /etc/datadog-agent
+ ```
+ Once in the datadog-agent I opened the  datadog.yaml file
+```
 root@aniqa/etc/datadog-agent://# nano datadog.yaml
-
+```
 scroll down all the way where you can see "tags:" and
 uncomment it. Here one can add tags(predefined or custom), ideally key-value pair like region:east etc
 
@@ -52,7 +54,7 @@ infrastructure/Host Map and you can see all the tags that I just defined in yaml
 
 ![tags on datadog account](images/collecting-metrics/tagsOnHostMap.png)
 
-Challenges: I was unable to see the tags after configuring them in the yaml file initially but after a couple of attempts they appeared.
+> Challenges: I was unable to see the tags after configuring them in the yaml file initially but after a couple of attempts they appeared.
 
 -----------------------------------------------------------
 
@@ -74,7 +76,7 @@ Mysql Installation in the terminal
 
 7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
 
-    <code>
+    ```
           init_config:
 
                 instances:
@@ -87,7 +89,7 @@ Mysql Installation in the terminal
                     options:
                         replication: 0
                         galera_cluster: 1
-        </code>                  
+      ```                  
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
    8. Restart the agent and check the status and you can see
@@ -112,12 +114,12 @@ Mysql Installation in the terminal
 a. In conf.d I created a file name custom-check.yaml
     ![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
     and simply added the following code
-       <code>
+       ```
                 init_config:
 
                 instances:
                     [{}]
-          </code>              
+        ```             
         ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
 
 
@@ -137,9 +139,9 @@ b. In checks.d I created a file custom-check.py
                     def check(self, instance):
                         self.gauge('my_metric',random.randint(0,1000))
          </code>
-      [images/collecting-metrics/custom-check-py-file.png]
-  Finally you can stop and restart the agent to see the checks being added
-        [images/collecting-metrics/custom-check.png]
+      ![custom checks python file](images/collecting-metrics/custom-check-py-file.png)
+  Finally I stoped and then restarted the agent to see the checks being added
+        ![custom checks seen by running datadog agent status](images/collecting-metrics/custom-check.png)
 
 ----------------------------------------------------------------------------
 
@@ -153,22 +155,24 @@ In Agent 6, min_collection_interval must be added at an instance level, and can 
 
 Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I am using Agent V6,for v5 its slightly different). now Agent will collect
 
-<code>
+```
       init_config:
 
       instances:
         - min_collection_interval: 45
 
-</code>
+```
 
-[images/collecting-metrics/changing-interval.png]
+![changing interval](images/collecting-metrics/changing-interval.png)
 
-To see my custom check rum the following command in terminal
+To see my custom check I ran the following command in terminal
 
+     ```
      $ sudo -u dd-agent -- datadog-agent check custom-check
+     ```
 
-[images/collecting-metrics/running-custom-check.png]
-[images/collecting-metrics/status-showing-tags-and-mysql.png] // This image is from second time setting up system
+![command to see custom checks](images/collecting-metrics/running-custom-check.png)
+![tags shown on datadog account](images/collecting-metrics/status-showing-tags-and-mysql.png)
 
 -----------------------------------------------------------------------------------
 
@@ -194,9 +198,9 @@ I created a ruby app for this problem using Bundler inside my hiring-engineers r
        c. Inside lib folder I have now a file codingruby.rb where I will place my code.
 
       Goto to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
-      [images/visualizing-data/api_app_key.png]
+      ![specifying api key](images/visualizing-data/api_app_key.png)
 
-After looking into related datadogs api endpoint which help create , update delete and query Timeboards.
+After looking into related datadogs api endpoints which help create , update delete and query Timeboards.
 
  And it has the following arguments
    - title [required]
@@ -211,15 +215,18 @@ After looking into related datadogs api endpoint which help create , update dele
             - default[optional]
     A post request is being made to "https://api.datadoghq.com/api/v1/dash"
 
-  Create a ruby file and add the following code in it
-  [use api_key and app_key inside ruby file  ]
-     [images/visualizing-data/ruby-file-api-call.png]
+  I create a ruby file and added the following code in it
+
+     ![calling datadog api](images/visualizing-data/ruby-file-api-call.png)
 
      In Order to create a timeboard I consulted the following resource link
-    [ https://docs.datadoghq.com/integrations/mysql/#metrics] [resource for finding mysql functions]
+    ```
+     https://docs.datadoghq.com/integrations/mysql/#metrics // resource for finding mysql functions
+   Related code in [code/timeboard-creation.rb]
+     ```
 
- see code in [code/timeboard-creation.rb]
-  <code>
+
+```
                 require "codingruby/version"
                 require 'rubygems'
                 require 'dogapi'
@@ -296,7 +303,7 @@ After looking into related datadogs api endpoint which help create , update dele
 
                 end
 
-</code>          
+```          
 
 after saving the above code simply run in your terminal
 
