@@ -319,8 +319,11 @@ after saving the above code simply run the following command in your terminal
   Now go back to datadog agent and you can see a new timeboard.
 
   ![Timeboard created](images/visualizing-data/timeboard-created.png)
-  ![ruby code to create timeboard ](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
+
+  ![ruby code to create timeboard](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
+
   ![custom metric](images/visualizing-data/getting-custom-metric.png)     
+  
   ![rollup function]([images/visualizing-data/rollup-function-applied-to-custom-metric.png)
 
 
