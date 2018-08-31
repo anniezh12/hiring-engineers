@@ -73,17 +73,18 @@ Mysql Installation in the terminal
      2. $ sudo apt-get install mysql
      3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
      4. Inside datadog account I navigated to 'integrations' menu option and select 'mysql' It shows all the steps to integrate mysql in the local environment.
-
+           ```
              a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
-                   ![setting mysql](images/settingPrevillagesInMysql.png)
+
              b. mysql> GRANT PROCESS ON *.* TO 'datadog'@'localhost';
-                   [settingPrevillages2.png]
+
              c. mysql> show databases like 'performance_schema'
-                   [showdbasPerf.png]
+
              d. mysql> GRANT SELECT ON performance_schema.* TO 'datadog'@'localhost';
+             ```
 
      7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
-
+         ```
           init_config:
 
                 instances:
@@ -97,6 +98,7 @@ Mysql Installation in the terminal
                         replication: 0
                         galera_cluster: 1
 
+          ```
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
 
@@ -107,6 +109,7 @@ Mysql Installation in the terminal
        ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
 
  Similarly, In datadog account it showed the installed mysql
+
       ![mysql ](images/collecting-metrics/mysql-installed.png)
 
       ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
