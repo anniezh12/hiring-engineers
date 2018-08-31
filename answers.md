@@ -211,14 +211,13 @@ Utilize the Datadog API to create a Timeboard that contains:
 -----------------------------------------------------------------------------------
 I created a ruby gem for this problem using Bundler inside my hiring-engineers repo, created a ruby gem with the following command
 
-    ```
        a. bundle gem codingruby
        b. once a gem is being created I added the following two gems in the Gemfile
              gem 'dogapi'
              gem 'dogstatsd-ruby'
         $ bundle install   #will install the above gems
        c. Inside lib folder I have now a file codingruby.rb where I will place my `code`.
-   ```
+
 
       Go to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
 
