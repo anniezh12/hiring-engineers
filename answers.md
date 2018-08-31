@@ -1,13 +1,13 @@
 
 
 
-##                                    COLLECTING METRICS
+###                                   COLLECTING METRICS
 
 Operating System: GNU/Linux (Ubunto 64-bit)/ Oracle VM VirtualBox
 
 Agent: Datadog Agent: v6.3.3
 
-###                           Setting Up Datadog Account and installing Agent on the local machine
+####          Setting Up Datadog Account and installing Agent on the local machine
 
 I first created a datadog account using this link https://app.datadoghq.com/signup
 Once datadog account has been created I used menu to select "Agent"(you could also use this link https://app.datadoghq.com/account/settings#agent)
@@ -47,9 +47,9 @@ In the terminal switch to super user(since I installed Datadog agent as super us
  ```
  Once in the datadog-agent I opened the  datadog.yaml file
 
-```
-root@aniqa/etc/datadog-agent://# nano datadog.yaml
-```
+
+`root@aniqa/etc/datadog-agent://# nano datadog.yaml`
+
 I scrolled down all the way where I was able to to see `tags:` and I
 uncomment it. Here one can add tags(predefined or custom), ideally key-value pair like `region:east` etc
 
