@@ -132,9 +132,10 @@ a. In conf.d I created a file name custom-check.yaml
 
     ![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
 
-    and simply added the following code
+    and simply added the following `code`
 
-       ```      init_config:
+       ```     
+        init_config:
                 instances:
                     [{}]
       ```             
@@ -216,7 +217,7 @@ I created a ruby gem for this problem using Bundler inside my hiring-engineers r
              gem 'dogapi'
              gem 'dogstatsd-ruby'
         $ bundle install   #will install the above gems
-       c. Inside lib folder I have now a file codingruby.rb where I will place my code.
+       c. Inside lib folder I have now a file codingruby.rb where I will place my `code`.
    ```
 
       Go to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
@@ -238,7 +239,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
             - default[optional]
     with a post request which is being made to `https://api.datadoghq.com/api/v1/dash`
 
-  I create a ruby file and added the following code in it
+  I create a ruby file and added the following `code` in it
 
      ![calling datadog api](images/visualizing-data/ruby-file-api-call.png)
 
