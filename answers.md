@@ -43,7 +43,7 @@ In the terminal switch to super user(since I installed Datadog agent as super us
 ```
 root@aniqa/etc/datadog-agent://# nano datadog.yaml
 ```
-scroll down all the way where you can see `tags:` and
+I scrolled down all the way where I was able to to see `tags:` and I
 uncomment it. Here one can add tags(predefined or custom), ideally key-value pair like region:east etc
 
 ![assigning tags in YAML file](images/collecting-metrics/tag-assignment-datadog-yaml.png)
@@ -92,22 +92,25 @@ Mysql Installation in the terminal
 
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
-   8. I restarted the agent and check the status. I was able to see that
+      8. I restarted the agent and check the status. I was able to see that
        mysql has been integrated.
+
        ```
 
        ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
+
       ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
 
       >Challenges:
-          + This section took me a lot of time each time when I have to restart the agent after writing code in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
+        >  + This section took me a lot of time each time when I have to restart the agent after writing code in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
           I later realized that it was due to me using Agent v5 and not upgrading it. Once I upgraded everything started working smoothly.
-          + I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them It got configured correctly.
+          >+ I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them It got configured correctly.
 
 
-    Question. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
+    >Question. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
 
     Adding a custom check was quiet simple I just had to create two files in the following two folders. One important thing is to give the same name to both files.
+
        a. /etc/datadog-agent/conf.d
        b. /etc/datadog-agent/checks.d
 
@@ -123,6 +126,7 @@ a. In conf.d I created a file name custom-check.yaml
                 instances:
                     [{}]
         ```             
+
         ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
 
 
@@ -130,7 +134,7 @@ Got an error message in my custom-check.py file
 
 ![mysql configured](images/collecting-metrics/custom-check-error-later-version)
 
- // Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
+ > Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
 
 b. In checks.d I created a file custom-check.py
   the checks inherits from the AgentCheck class, I also import random class to be able to generate a random number to be passed through metric, "my_metric"
@@ -154,10 +158,8 @@ b. In checks.d I created a file custom-check.py
 
 We can add min_collection_interval to help define how often the check should be run globally by Agent. If it is greater than the interval time for the Agent collector, a line is added to the log stating that collection for this script was skipped. The default is 0 which means it’s collected at the same interval as the rest of the integrations on that Agent.
 
- If the value is set to 45, it does not mean that the metric is collected every 45 seconds, but rather that it could be collected as often as every 45 seconds.
-
+If the value is set to 45, it does not mean that the metric is collected every 45 seconds, but rather that it could be collected as often as every 45 seconds.
 In Agent 6, min_collection_interval must be added at an instance level, and can be configured individually for each instance.
-
 Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I am using Agent V6,for v5 its slightly different).
 
 ```
@@ -173,18 +175,19 @@ Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I
 To see my custom check I ran the following command in terminal
 
      ```
+
      $ sudo -u dd-agent -- datadog-agent check custom-check
+
      ```
 
 ![command to see custom checks](images/collecting-metrics/running-custom-check.png)
+
 ![tags shown on datadog account](images/collecting-metrics/status-showing-tags-and-mysql.png)
 
------------------------------------------------------------------------------------
-
- Yes, since we can specify our custom collection interval in the YAML and not in the Python file.
+> Yes, since we can specify our custom collection interval in the YAML and not in the Python file.
 
 
-#                               VISUALIZING DATA
+###                               VISUALIZING DATA
 
 
 Utilize the Datadog API to create a Timeboard that contains:
@@ -203,6 +206,7 @@ I created a ruby gem for this problem using Bundler inside my hiring-engineers r
         $ bundle install   #will install the above gems
        c. Inside lib folder I have now a file codingruby.rb where I will place my code.
    ```
+
       Go to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
 
       ![specifying api key](images/visualizing-data/api_app_key.png)
@@ -417,7 +421,7 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
                ![daily monitor showing last fifteen minutes](images/monitoring-data/daily-monitor-showing-last-fifteen-minutes-before-downtime.png)
 
 
-#                                     Collecting APM Data:
+###                                   Collecting APM Data:
 
     Given the following Flask app (or any Python/Ruby/Go app of your choice) instrument this using Datadog’s APM solution.
 
