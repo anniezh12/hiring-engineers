@@ -1,22 +1,26 @@
 
 
 
-#                                    COLLECTING METRICS
+##                                    COLLECTING METRICS
 
 Operating System: GNU/Linux (Ubunto 64-bit)/ Oracle VM VirtualBox
+
 Agent: Datadog Agent: v6.3.3
 
-#                           Setting Up Datadog Account and installing Agent on the local machine
+###                           Setting Up Datadog Account and installing Agent on the local machine
 
-https://app.datadoghq.com/signup create a free Account.
+I first created a datadog account using this link https://app.datadoghq.com/signup
+Once datadog account has been created I used menu to select "Agent"(you could also use this link https://app.datadoghq.com/account/settings#agent)
 
-Either go from menu to "Agent" or use this link https://app.datadoghq.com/account/settings#agent.
-
+![Agent install step 1](images/collecting-metrics/agent-install-step1.png)
 I picked Ubuntu(pick one depending on your system)
+![Agent install step 2](images/collecting-metrics/agent-install-step2.png)
+
 Copy and paste the "One-Step Install" command in your terminal root directory and press <Enter>
 It will take some time to install it on your system, once Installed
 Get the other command to upgrade it which is specified in step 2.
-#### Image showing Datadog Agent installed and Running
+
+#### Image showing Datadog Agent installed and running
  ![Image showing Datadog Agent](images/collecting-metrics/ddagent.png)  
 
  Now navigate to the datadog account where you can see the dashboard[link] appear in Events[menu option]
