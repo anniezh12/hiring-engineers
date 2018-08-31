@@ -72,7 +72,7 @@ I then checked datadog account by navigating to
 3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
 4. Inside datadog account I navigated to `integrations` menu option and select `mysql` It shows all the steps to integrate mysql in the local environment.
 
-           ```
+
              a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
 
              b. mysql> GRANT PROCESS ON *.* TO 'datadog'@'localhost';
@@ -81,9 +81,9 @@ I then checked datadog account by navigating to
 
              d. mysql> GRANT SELECT ON performance_schema.* TO 'datadog'@'localhost';
 
-           ```
 
-     7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
+
+7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
 
          ```
           init_config:
@@ -103,7 +103,7 @@ I then checked datadog account by navigating to
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
 
-      8. I restarted the agent and check the status. I was able to see that
+8. I restarted the agent and check the status. I was able to see that
        mysql has been integrated.
 
 
