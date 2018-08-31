@@ -16,7 +16,7 @@ I picked Ubuntu(pick one depending on your system)
 Copy and paste the "One-Step Install" command in your terminal root directory and press <Enter>
 It will take some time to install it on your system, once Installed
 Get the other command to upgrade it which is specified in step 2.
-   ###### Image showing Datadog Agent installed and Running
+#### Image showing Datadog Agent installed and Running
  ![Image showing Datadog Agent](images/collecting-metrics/ddagent.png)  
 
  Now navigate to the datadog account where you can see the dashboard[link] appear in Events[menu option]
@@ -39,10 +39,11 @@ In the terminal switch to super user(since I installed Datadog agent as super us
  ~$ cd /etc/datadog-agent
  ```
  Once in the datadog-agent I opened the  datadog.yaml file
+
 ```
 root@aniqa/etc/datadog-agent://# nano datadog.yaml
 ```
-scroll down all the way where you can see "tags:" and
+scroll down all the way where you can see `tags:` and
 uncomment it. Here one can add tags(predefined or custom), ideally key-value pair like region:east etc
 
 ![assigning tags in YAML file](images/collecting-metrics/tag-assignment-datadog-yaml.png)
@@ -59,6 +60,7 @@ infrastructure/Host Map and you can see all the tags that I just defined in yaml
 > Question. Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database?
 
 Mysql Installation in the terminal
+
 ```
      1. sudo su [provide password]     
      2. $ sudo apt-get install mysql
@@ -73,7 +75,7 @@ Mysql Installation in the terminal
                    [showdbasPerf.png]
              d. mysql> GRANT SELECT ON performance_schema.* TO 'datadog'@'localhost';
 
-7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
+     7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
 
           init_config:
 
@@ -90,12 +92,13 @@ Mysql Installation in the terminal
 
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
-   8. I restarted the agent and check the status was able to see that
+   8. I restarted the agent and check the status. I was able to see that
        mysql has been integrated.
+       ```
 
        ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
       ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
-```
+
       >Challenges:
           + This section took me a lot of time each time when I have to restart the agent after writing code in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
           I later realized that it was due to me using Agent v5 and not upgrading it. Once I upgraded everything started working smoothly.
@@ -109,8 +112,11 @@ Mysql Installation in the terminal
        b. /etc/datadog-agent/checks.d
 
 a. In conf.d I created a file name custom-check.yaml
+
     ![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
+
     and simply added the following code
+
        ```
                 init_config:
 
@@ -129,20 +135,22 @@ Got an error message in my custom-check.py file
 b. In checks.d I created a file custom-check.py
   the checks inherits from the AgentCheck class, I also import random class to be able to generate a random number to be passed through metric, "my_metric"
 
-        <code>
+        ```
                 from checks import AgentCheck
                 import random
                 class HelloCheck(AgentCheck):
                     def check(self, instance):
                         self.gauge('my_metric',random.randint(0,1000))
-         </code>
+         ```
+
       ![custom checks python file](images/collecting-metrics/custom-check-py-file.png)
+
   Finally I stoped and then restarted the agent to see the checks being added
+
         ![custom checks seen by running datadog agent status](images/collecting-metrics/custom-check.png)
 
-----------------------------------------------------------------------------
 
-Q. Change your check's collection interval so that it only submits the metric once every 45 seconds?
+>Question:- Change your check's collection interval so that it only submits the metric once every 45 seconds?
 
 We can add min_collection_interval to help define how often the check should be run globally by Agent. If it is greater than the interval time for the Agent collector, a line is added to the log stating that collection for this script was skipped. The default is 0 which means it’s collected at the same interval as the rest of the integrations on that Agent.
 
@@ -185,19 +193,21 @@ Utilize the Datadog API to create a Timeboard that contains:
      b. Any metric from the Integration on your Database with the anomaly function applied.
      c. Your custom metric with the rollup function applied to sum up all the points for the past hour into one bucket
 -----------------------------------------------------------------------------------
-I created a ruby app for this problem using Bundler inside my hiring-engineers repo, created a ruby gem with the following command
+I created a ruby gem for this problem using Bundler inside my hiring-engineers repo, created a ruby gem with the following command
 
+    ```
        a. bundle gem codingruby
        b. once a gem is being created I added the following two gems in the Gemfile
              gem 'dogapi'
              gem 'dogstatsd-ruby'
         $ bundle install   #will install the above gems
        c. Inside lib folder I have now a file codingruby.rb where I will place my code.
+   ```
+      Go to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
 
-      Goto to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
       ![specifying api key](images/visualizing-data/api_app_key.png)
 
-After looking into related datadogs api endpoints which help create , update delete and query Timeboards.
+After looking at related datadogs api endpoints(which can help create, update, delete and query timeboards).
 
  And it has the following arguments
    - title [required]
@@ -210,20 +220,18 @@ After looking into related datadogs api endpoints which help create , update del
             - name[required]
             - prefix[optional]
             - default[optional]
-    A post request is being made to "https://api.datadoghq.com/api/v1/dash"
+    with a post request which is being made to `https://api.datadoghq.com/api/v1/dash`
 
   I create a ruby file and added the following code in it
 
      ![calling datadog api](images/visualizing-data/ruby-file-api-call.png)
 
      In Order to create a timeboard I consulted the following resource link
+
+     https://docs.datadoghq.com/integrations/mysql/#metrics (A resource for finding mysql functions)
+
+   Related code is in [code/timeboard-creation.rb]
     ```
-     https://docs.datadoghq.com/integrations/mysql/#metrics // resource for finding mysql functions
-   Related code in [code/timeboard-creation.rb]
-     ```
-
-
-```
                 require "codingruby/version"
                 require 'rubygems'
                 require 'dogapi'
@@ -302,9 +310,9 @@ After looking into related datadogs api endpoints which help create , update del
 
 ```          
 
-after saving the above code simply run in your terminal
+after saving the above code simply run the following command in your terminal
 
-      $ rspec lib/codingruby.rb
+      >$ rspec lib/codingruby.rb
 
   Now go back to datadog agent and you can see a new timeboard.
 
