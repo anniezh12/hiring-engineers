@@ -85,8 +85,7 @@ I then checked datadog account by navigating to
 
 7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
 
-         ```
-          init_config:
+              init_config:
 
                 instances:
                   - server: localhost
@@ -99,7 +98,7 @@ I then checked datadog account by navigating to
                         replication: 0
                         galera_cluster: 1
 
-          ```
+
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
 
