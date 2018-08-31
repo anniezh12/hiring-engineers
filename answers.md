@@ -1,12 +1,12 @@
 
 
 
-                                   ## COLLECTING METRICS
+#                                    COLLECTING METRICS
 
 Operating System: GNU/Linux (Ubunto 64-bit)/ Oracle VM VirtualBox
 Agent: Datadog Agent: v6.3.3
 
-                          ## Setting Up Datadog Account and installing Agent on the local machine
+#                           Setting Up Datadog Account and installing Agent on the local machine
 
 https://app.datadoghq.com/signup create a free Account.
 
@@ -120,7 +120,7 @@ a. In conf.d I created a file name custom-check.yaml
         ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
 
 
-#Got an error message in my custom-check.py file
+Got an error message in my custom-check.py file
 
 ![mysql configured](images/collecting-metrics/custom-check-error-later-version)
 
@@ -175,9 +175,9 @@ To see my custom check I ran the following command in terminal
 
  Yes, since we can specify our custom collection interval in the YAML and not in the Python file.
 
-                          -------------------------
-                               VISUALIZING DATA
-                          -------------------------
+
+#                               VISUALIZING DATA
+
 
 Utilize the Datadog API to create a Timeboard that contains:
 
@@ -334,7 +334,7 @@ after saving the above code simply run in your terminal
     and was represented with red color.
 
 
-                                       ##Monitoring Data
+#                                       Monitoring Data
 
    Create a new Metric Monitor that watches the average of your custom metric (my_metric) and will alert if it’s above the following values over the past 5 minutes:
            Warning threshold of 500
@@ -402,32 +402,31 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
       >c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
           I received email notification
 
-               [images/monitoring-data/email-notification-of-daily-downtime.png].
-               [images/monitoring-data/email-notification-of-weekend-downtime.png].
-               [images/monitoring-data/active-downtime.png]
-               [images/monitoring-data/warning-alert.png]
-               [images/monitoring-data/daily-monitor-showing-last-fifteen-minutes-before-downtime.png]
+               ![email notification](images/monitoring-data/email-notification-of-daily-downtime.png)
+               ![email notification downtime](images/monitoring-data/email-notification-of-weekend-downtime.png)
+               ![email notification downtime active](images/monitoring-data/active-downtime.png)
+               ![email waring alert](images/monitoring-data/warning-alert.png)
+               ![daily monitor showing last fifteen minutes](images/monitoring-data/daily-monitor-showing-last-fifteen-minutes-before-downtime.png)
 
-                               ----------------------------------
-                                     Collecting APM Data:
-                               ----------------------------------
+
+#                                     Collecting APM Data:
 
     Given the following Flask app (or any Python/Ruby/Go app of your choice) instrument this using Datadog’s APM solution.
 
-   This was a little confusing for me I tried to integrate it in my ruby folder but it didn't work , next I created a rails app in my directory and followed the documentation provided
+    I created a rails app in my directory and followed the documentation provided by datadog
 
-         $ rails new DataDogApmRails #will create a rails app
+         $ rails new DataDogApmRails # will create a rails app
 
     The Ruby APM tracer sends trace data through the Datadog Agent
 
    1. Go to datadog account and navigate to APM, choose docs and select framework for example I chose 'Rails'
-   [images/collecting-apm-data/configuring-apm-using-rails.png]
+   ![configuring apm](images/collecting-apm-data/configuring-apm-using-rails.png)
 
    I followed the instruction as follows
 
    a. added "gem 'ddtrace'" in the gem file and then install it using " $ bundle install"
 
-  b. created a datadog-tracer.rb file in  config/initializers, and put the following code in it
+   b. created a datadog-tracer.rb file in  config/initializers, and put the following code in it
       ```
          Rails.configuration.datadog_trace = {
            auto_instrument: true,
@@ -438,11 +437,11 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
          }
       ```   
 
-         [images/collecting-apm-data/datadog-tracer-rb-file.png]
+         ![tracer.rb](images/collecting-apm-data/datadog-tracer-rb-file.png)
 
-        Code in [DataDogApmRails/initializers/datadog-tracer.rb]
+        Code can be seen in the 'DataDogApmRails/initializers/datadog-tracer.rb' file
 
-  c. In datadog-agent/datadog.yaml remove the comment from
+    c. In datadog-agent/datadog.yaml remove the comment from
 
      ```
               apm_config:
@@ -450,36 +449,38 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
      ```
 
   2.  I also created a controller using
+     ```
       $ rails g controller welcome
-      which provided me a controllers/welcome_controller.rb and a views folder(since rails is an MVC framework)
+    ```
+      which provided me a controllers/welcome_controller.rb and a views folder(since rails is an MVC(Model View Controller) framework)
+
       I defined index action in the welcome_controller.rb and then created a related index.html.erb file with some simple text in it.
 
-     See code in [DataDogApmRails/app/controllers/welcome_controller.rb]
+     Related code is in 'DataDogApmRails/app/controllers/welcome_controller.rb' file
 
   3. Also defined routes in [DataDogApmRails/config/routes.rb]
      Finally I ran the rails server by '$ rails s'  and went back to my datadog account to see the changes.
 
-       [images/collecting-apm-data/apm-service.png] #shows the services
-       [images/collecting-apm-data/apm-traces.png]  #shows the traces
-       [images/collecting-apm-data/apm-service-map.png] #shows the service map
-       [images/collecting-apm-data/welcome-index.png]
+       ![apm services](images/collecting-apm-data/apm-service.png) #shows the services
+       ![apm traces](images/collecting-apm-data/apm-traces.png)  #shows the traces
+       ![apm service map](images/collecting-apm-data/apm-service-map.png) #shows the service map
+       ![welcome-index page](images/collecting-apm-data/welcome-index.png)
 
   4. To test how APM shows errors, I added 2 errors inside config/routes.rb file and the APM Monitor started showing it
 
-    [images/collecting-apm-data/apm-showing-errors.png]
+       ![apm showing errors](images/collecting-apm-data/apm-showing-errors.png)
 
  Moreover, we can also export APM graphs to any monitor of our choice by selecting the settings button and choosing export
 
-    -----------------------------------------------
 
-    What is the difference between a Service and a Resource?
+
+>Question:-    What is the difference between a Service and a Resource?
 
   A service is a set of processes that do the same job. while a resource is a particular action for a service. A service is self-contained and independently deployed and developed software, which can provide services using different resources.
 
 
 
-                             ---------------------------------------------------------
-                                           --------------------------
-                                           Recommended use of Datadog
+
+#                                           Recommended use of Datadog
                                            --------------------------
     I am currently working with disabled kids and the one thing I would love to have is the ability to monitor the causes of what I observe. For example, sometimes a kid will have many seizures in a day while other days they will have no seizures. Similarly with their behaviors, I would love to monitor the food they consume and the noise level affecting their behaviors. So proper measures can be taken.             
