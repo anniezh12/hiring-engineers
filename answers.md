@@ -323,7 +323,7 @@ after saving the above code simply run the following command in your terminal
   ![ruby code to create timeboard](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
 
   ![custom metric](images/visualizing-data/getting-custom-metric.png)     
-  
+
   ![rollup function]([images/visualizing-data/rollup-function-applied-to-custom-metric.png)
 
 
