@@ -213,8 +213,8 @@ I created a ruby gem for this problem using Bundler inside my hiring-engineers r
 
        a. bundle gem codingruby
        b. once a gem is being created I added the following two gems in the Gemfile
-             gem 'dogapi'
-             gem 'dogstatsd-ruby'
+             `gem 'dogapi'`
+             `gem 'dogstatsd-ruby'``
         $ bundle install   #will install the above gems
        c. Inside lib folder I have now a file codingruby.rb where I will place my `code`.
 
