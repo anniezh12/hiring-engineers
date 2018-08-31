@@ -62,11 +62,10 @@ I then checked datadog account by navigating to
 
 > Challenges: I was unable to see the tags after configuring them in the yaml file initially but after a couple of attempts they appeared.
 
------------------------------------------------------------
 
 > Question. Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database?
 
-Mysql Installation in the terminal
+#### Mysql Installation in the terminal
 
 
      1. sudo su [provide password]     
