@@ -61,7 +61,7 @@ infrastructure/Host Map and you can see all the tags that I just defined in yaml
 
 Mysql Installation in the terminal
 
-```
+
      1. sudo su [provide password]     
      2. $ sudo apt-get install mysql
      3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
@@ -92,10 +92,10 @@ Mysql Installation in the terminal
 
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
+
       8. I restarted the agent and check the status. I was able to see that
        mysql has been integrated.
 
-       ```
 
        ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
 
@@ -120,12 +120,10 @@ a. In conf.d I created a file name custom-check.yaml
 
     and simply added the following code
 
-       ```
-                init_config:
-
+       ```      init_config:
                 instances:
                     [{}]
-        ```             
+      ```             
 
         ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
 
