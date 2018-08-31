@@ -65,13 +65,12 @@ I then checked datadog account by navigating to
 
 > Question. Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database?
 
-#### Mysql Installation in the terminal
+#####  Mysql Installation in the terminal
 
-
-     1. sudo su [provide password]     
-     2. $ sudo apt-get install mysql
-     3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
-     4. Inside datadog account I navigated to `integrations` menu option and select `mysql` It shows all the steps to integrate mysql in the local environment.
+1. sudo su [provide password]     
+2. $ sudo apt-get install mysql
+3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
+4. Inside datadog account I navigated to `integrations` menu option and select `mysql` It shows all the steps to integrate mysql in the local environment.
 
            ```
              a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
@@ -117,7 +116,7 @@ I then checked datadog account by navigating to
       ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
 
       >Challenges:
-        >  + This section took me a lot of time each time when I have to restart the agent after writing code in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
+        >  + This section took me a lot of time each time when I have to restart the agent after writing in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
           I later realized that it was due to me using Agent v5 and not upgrading it. Once I upgraded everything started working smoothly.
           >+ I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them It got configured correctly.
 
