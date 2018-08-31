@@ -51,12 +51,12 @@ In the terminal switch to super user(since I installed Datadog agent as super us
 root@aniqa/etc/datadog-agent://# nano datadog.yaml
 ```
 I scrolled down all the way where I was able to to see `tags:` and I
-uncomment it. Here one can add tags(predefined or custom), ideally key-value pair like region:east etc
+uncomment it. Here one can add tags(predefined or custom), ideally key-value pair like `region:east` etc
 
 ![assigning tags in YAML file](images/collecting-metrics/tag-assignment-datadog-yaml.png)
 
 I then checked datadog account by navigating to
-'infrastructure/Host Map' and you can see all the tags that I just defined in yaml file there.
+`infrastructure/Host Map` and you can see all the tags that I just defined in `yaml` file there.
 
 ![tags on datadog account](images/collecting-metrics/tagsOnHostMap.png)
 
@@ -71,7 +71,8 @@ I then checked datadog account by navigating to
      1. sudo su [provide password]     
      2. $ sudo apt-get install mysql
      3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
-     4. Inside datadog account I navigated to 'integrations' menu option and select 'mysql' It shows all the steps to integrate mysql in the local environment.
+     4. Inside datadog account I navigated to `integrations` menu option and select `mysql` It shows all the steps to integrate mysql in the local environment.
+
            ```
              a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
 
@@ -80,9 +81,11 @@ I then checked datadog account by navigating to
              c. mysql> show databases like 'performance_schema'
 
              d. mysql> GRANT SELECT ON performance_schema.* TO 'datadog'@'localhost';
-             ```
+
+           ```
 
      7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
+
          ```
           init_config:
 
