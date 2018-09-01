@@ -143,7 +143,7 @@ Steps for MySQL installation in the terminal are as follows:
 
 a. In conf.d I created a file name custom-check.yaml
 
-    ![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
+![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
 
     and simply added the following `code`
 
@@ -153,7 +153,7 @@ a. In conf.d I created a file name custom-check.yaml
                     [{}]
       ```             
 
-        ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
+![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
 
 
 Got an error message in my custom-check.py file
@@ -173,11 +173,11 @@ b. In checks.d I created a file custom-check.py
                         self.gauge('my_metric',random.randint(0,1000))
          ```
 
-      ![custom checks python file](images/collecting-metrics/custom-check-py-file.png)
+![custom checks python file](images/collecting-metrics/custom-check-py-file.png)
 
   Finally I stoped and then restarted the agent to see the checks being added
 
-        ![custom checks seen by running datadog agent status](images/collecting-metrics/custom-check.png)
+![custom checks seen by running datadog agent status](images/collecting-metrics/custom-check.png)
 
 
 >Question:- Change your check's collection interval so that it only submits the metric once every 45 seconds?
@@ -234,7 +234,7 @@ I created a ruby gem for this problem using Bundler inside my hiring-engineers r
 
       Go to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
 
-      ![specifying api key](images/visualizing-data/api_app_key.png)
+![specifying api key](images/visualizing-data/api_app_key.png)
 
 After looking at related datadogs api endpoints(which can help create, update, delete and query timeboards).
 
@@ -253,7 +253,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
 
   I create a ruby file and added the following `code` in it
 
-     ![calling datadog api](images/visualizing-data/ruby-file-api-call.png)
+![calling datadog api](images/visualizing-data/ruby-file-api-call.png)
 
      In Order to create a timeboard I consulted the following resource link
 
@@ -345,13 +345,13 @@ after saving the above code simply run the following command in your terminal
 
   Now go back to datadog agent and you can see a new timeboard.
 
-  ![Timeboard created](images/visualizing-data/timeboard-created.png)
+![Timeboard created](images/visualizing-data/timeboard-created.png)
 
-  ![ruby code to create timeboard](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
+![ruby code to create timeboard](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
 
-  ![custom metric](images/visualizing-data/getting-custom-metric.png)     
+![custom metric](images/visualizing-data/getting-custom-metric.png)     
 
-  ![rollup function]([images/visualizing-data/rollup-function-applied-to-custom-metric.png)
+![rollup function]([images/visualizing-data/rollup-function-applied-to-custom-metric.png)
 
 
 
@@ -364,8 +364,8 @@ after saving the above code simply run the following command in your terminal
 
     Now I clicked one of the graph and clicked camera, wrote a message, used @myemail@yahoo.com and pressed enter. I recieved a full board, with the graph I picked, more visibly.
 
-     ![email](images/visualizing-data/email-sending.png)
-     ![email 2](images/visualizing-data/email-showing-graph.png)
+![email](images/visualizing-data/email-sending.png)
+![email 2](images/visualizing-data/email-showing-graph.png)
 
   Bonus Question: What is the Anomaly graph displaying?
     Anomaly detection is a strategy to see whats normal and whats not.
@@ -383,14 +383,14 @@ after saving the above code simply run the following command in your terminal
 
 Ans.  This was an easy part all I did to go to dashboard and clicked settings button on the graph showing my_metric and chose
   "create monitor" option a new window popped up,
-  ![creating monitor](images/monitoring-data/create-monitor.png)  
+![creating monitor](images/monitoring-data/create-monitor.png)  
 ```
   I added values
          a. Alert threshold : 800
          b. Warning threshold: 500
          c. chose "Notify"if data is missing for more than "10"(added 10 in the textbox) minutes  
 ```
-        ![adding alert threshold](images/monitoring-data/selecting-values.png)
+![adding alert threshold](images/monitoring-data/selecting-values.png)
 
   ### Please configure the monitor’s message so that it will:
          Send you an email whenever the monitor triggers.
@@ -400,22 +400,22 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
 
     For this section I used predefined tags like {{#is_warning}}Appropriate message{{/#is_warning}}
 
-       ![monitor messages](images/monitoring-data/monitor-msgs.png)
+![monitor messages](images/monitoring-data/monitor-msgs.png)
 
-       Moreover, I also selected my name in `Notify your team`
+ Moreover, I also selected my name in `Notify your team`
 
-       ![monitor](images/monitoring-data/monitor.png)
+![monitor](images/monitoring-data/monitor.png)
     We can see this monitor by going to monitors and clicking the monitor you want to see
 
-    ![monitors list](images/monitoring-data/monitor-list.png)
+![monitors list](images/monitoring-data/monitor-list.png)
 
-    ![monitor events](images/monitoring-data/monitor-events.png)
+![monitor events](images/monitoring-data/monitor-events.png)
 
-    ![monitor ui list](images/monitoring-data/monitor-ui-list.png)
+![monitor ui list](images/monitoring-data/monitor-ui-list.png)
 
     Moreover, Alerts will also appear on the dashboard.
 
-    ![warnings on dashboard](images/monitoring-data/dashboard-showing-warning.png)
+![warnings on dashboard](images/monitoring-data/dashboard-showing-warning.png)
 
 
     ### Bonus Question: Since this monitor is going to alert pretty often, you don’t want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
@@ -425,28 +425,28 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
               ![downtime](images/monitoring-data/downtime-selected.png)
 
           once saved it can be viewed by selecting it in the manage downtime window as shown in the following picture
-               ![downtime schedule](images/monitoring-data/downtime-scheduled.png)
+![downtime schedule](images/monitoring-data/downtime-scheduled.png)
 
 
       >b. And one that silences it all day on Sat-Sun.
 
          I created another downtime event as followed,
 
-            ![weekend downtime](images/monitoring-data/downtime-weekend.png)
+![weekend downtime](images/monitoring-data/downtime-weekend.png)
 
           I had to do some calculations since my Friday downtime will start at 7:pm and will stay until Saturday morning so I started the weekend downtime from 9:00 am Saturday and specified a duration of 48 hours.
 
-             ![downtime weekend][images/monitoring-data/downtime-weekend-2.png]
+![downtime weekend][images/monitoring-data/downtime-weekend-2.png]
                -----------------------------------
 
       >c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
           I received email notification
 
-               ![email notification](images/monitoring-data/email-notification-of-daily-downtime.png)
-               ![email notification downtime](images/monitoring-data/email-notification-of-weekend-downtime.png)
-               ![email notification downtime active](images/monitoring-data/active-downtime.png)
-               ![email waring alert](images/monitoring-data/warning-alert.png)
-               ![daily monitor showing last fifteen minutes](images/monitoring-data/daily-monitor-showing-last-fifteen-minutes-before-downtime.png)
+![email notification](images/monitoring-data/email-notification-of-daily-downtime.png)
+![email notification downtime](images/monitoring-data/email-notification-of-weekend-downtime.png)
+![email notification downtime active](images/monitoring-data/active-downtime.png)
+![email waring alert](images/monitoring-data/warning-alert.png)
+![daily monitor showing last fifteen minutes](images/monitoring-data/daily-monitor-showing-last-fifteen-minutes-before-downtime.png)
 
 
 ###                                   Collecting APM Data:
@@ -460,7 +460,7 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
     The Ruby APM tracer sends trace data through the Datadog Agent
 
    1. Go to datadog account and navigate to APM, choose docs and select framework for example I chose 'Rails'
-   ![configuring apm](images/collecting-apm-data/configuring-apm-using-rails.png)
+![configuring apm](images/collecting-apm-data/configuring-apm-using-rails.png)
 
    I followed the instruction as follows
 
@@ -477,7 +477,7 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
          }
       ```   
 
-         ![tracer.rb](images/collecting-apm-data/datadog-tracer-rb-file.png)
+![tracer.rb](images/collecting-apm-data/datadog-tracer-rb-file.png)
 
         Code can be seen in the 'DataDogApmRails/initializers/datadog-tracer.rb' file
 
@@ -501,14 +501,14 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
   3. Also defined routes in [DataDogApmRails/config/routes.rb]
      Finally I ran the rails server by '$ rails s'  and went back to my datadog account to see the changes.
 
-       ![apm services](images/collecting-apm-data/apm-service.png) #shows the services
-       ![apm traces](images/collecting-apm-data/apm-traces.png)  #shows the traces
-       ![apm service map](images/collecting-apm-data/apm-service-map.png) #shows the service map
-       ![welcome-index page](images/collecting-apm-data/welcome-index.png)
+![apm services](images/collecting-apm-data/apm-service.png) #shows the services
+![apm traces](images/collecting-apm-data/apm-traces.png)  #shows the traces
+![apm service map](images/collecting-apm-data/apm-service-map.png) #shows the service map
+![welcome-index page](images/collecting-apm-data/welcome-index.png)
 
   4. To test how APM shows errors, I added 2 errors inside config/routes.rb file and the APM Monitor started showing it
 
-       ![apm showing errors](images/collecting-apm-data/apm-showing-errors.png)
+![apm showing errors](images/collecting-apm-data/apm-showing-errors.png)
 
  Moreover, we can also export APM graphs to any monitor of our choice by selecting the settings button and choosing export
 
