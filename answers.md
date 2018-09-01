@@ -44,7 +44,7 @@ Once installed, I used the command given in step 2 to update/upgrade the `Agent`
 
  ![Image showing Datadog Agent](images/collecting-metrics/ddagent.png)  
 
- At this stage I navigated to the datadog account where I was able to observe the dashboard (which was provided as a link in the Events tab of the menu options)
+ At this stage, I navigated to the datadog account where I was able to observe the dashboard (which was provided as a link in the Events tab of the menu options)
 
  ![datadog dashboard](images/collecting-metrics/dd-dashboard.png)
 
@@ -67,7 +67,7 @@ In the terminal, I switched to super user mode (since I installed Datadog agent 
 `root@aniqa/etc/datadog-agent://# nano datadog.yaml`
 
 I located the `tags:` in the yaml file and changed it from comment to a command (by removing the `#` character).
-Here, I added additional tags (note predefined or custom tags can be added ideally key-value pairs like `region:east` etc).
+Here, I added additional tags (Note: Predefined or custom tags can be added, ideally key-value pairs like `region:east` etc).
 
 ![assigning tags in YAML file](images/collecting-metrics/tag-assignment-datadog-yaml.png)
 
@@ -81,6 +81,8 @@ I then checked datadog account by navigating to the
 > Question. Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database?
 
 #####  MySQL installation in the terminal
+
+Steps for MySQL installation in the terminal are as follows:
 
 * $ sudo su [provide password]     
 * $ sudo apt-get install mysql
@@ -112,22 +114,19 @@ I then checked datadog account by navigating to the
                     options:
                         replication: 0
                         galera_cluster: 1
-
-
-
-             ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
+![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
 
 * I restarted the agent and check the status. I was able to see that
        mysql has been integrated.
 
 
-       ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
+![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
 
  Similarly, In datadog account it showed the installed mysql
 
-      ![mysql ](images/collecting-metrics/mysql-installed.png)
+![mysql ](images/collecting-metrics/mysql-installed.png)
 
-      ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
+![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
 
       >Challenges:
         >  + This section took me a lot of time each time when I have to restart the agent after writing in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
