@@ -147,34 +147,32 @@ a. In conf.d I created a file name custom-check.yaml
 
 ![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
 
-and simply added the following `code`
+and simply added the following code
 
-       ```     
+```     
         init_config:
                 instances:
                     [{}]
-      ```             
+```             
 
 ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
-
 
 Got an error message in my custom-check.py file
 
 ![mysql configured](images/collecting-metrics/custom-check-error-later-version)
 
- > Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
+> Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
 
 b. In checks.d I created a file custom-check.py
   the checks inherits from the AgentCheck class, I also import random class to be able to generate a random number to be passed through metric, "my_metric"
 
-        ```
+```
                 from checks import AgentCheck
                 import random
                 class HelloCheck(AgentCheck):
                     def check(self, instance):
                         self.gauge('my_metric',random.randint(0,1000))
-         ```
-
+```
 ![custom checks python file](images/collecting-metrics/custom-check-py-file.png)
 
   Finally I stoped and then restarted the agent to see the checks being added
@@ -202,11 +200,9 @@ Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I
 
 To see my custom check I ran the following command in terminal
 
-     ```
-
+```
      $ sudo -u dd-agent -- datadog-agent check custom-check
-
-     ```
+ ```
 
 ![command to see custom checks](images/collecting-metrics/running-custom-check.png)
 
@@ -223,7 +219,7 @@ Utilize the Datadog API to create a Timeboard that contains:
      a. Your custom metric scoped over your host.
      b. Any metric from the Integration on your Database with the anomaly function applied.
      c. Your custom metric with the rollup function applied to sum up all the points for the past hour into one bucket
------------------------------------------------------------------------------------
+
 I created a ruby gem for this problem using Bundler inside my hiring-engineers repo, created a ruby gem with the following command
 
        a. bundle gem codingruby
@@ -262,7 +258,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
      https://docs.datadoghq.com/integrations/mysql/#metrics (A resource for finding mysql functions)
 
    Related code is in [code/timeboard-creation.rb]
-    ```
+```
                 require "codingruby/version"
                 require 'rubygems'
                 require 'dogapi'
