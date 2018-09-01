@@ -84,10 +84,11 @@ I then checked datadog account by navigating to the
 
 Steps for MySQL installation in the terminal are as follows:
 
-* $ sudo su [provide password]     
-* $ sudo apt-get install mysql
-* $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
-* Inside datadog account I navigated to `integrations` menu option and select `mysql` It shows all the steps to integrate mysql in the local environment.
+1 $ sudo su [provide password]     
+2 $ sudo apt-get install mysql
+3 $ sudo netstat -tap | grep mysql  # instead of step 2 this command could be used to either start an already existing database or create a new one
+4 Inside datadog account I navigated to `integrations` menu option and selected `mysql`. It showed all the steps to integrate `mysql` in the local environment.
+Which were given as follows:
 
 
              a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
@@ -100,7 +101,7 @@ Steps for MySQL installation in the terminal are as follows:
 
 
 
-*  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
+5  I added the configuration block to `/etc/datadog-agent/conf.d` to start gathering metrics
 
               init_config:
 
@@ -114,16 +115,16 @@ Steps for MySQL installation in the terminal are as follows:
                     options:
                         replication: 0
                         galera_cluster: 1
+
 ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
 
-* I restarted the agent and check the status. I was able to see that
+6 I restarted the agent and check the status. I was able to see that
        mysql has been integrated.
 
 
 ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
 
  Similarly, In datadog account it showed the installed mysql
-
 ![mysql ](images/collecting-metrics/mysql-installed.png)
 
 ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
