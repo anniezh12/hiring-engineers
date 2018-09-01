@@ -132,10 +132,9 @@ Following image showed `MySQL` graph on the dashboard
 
 ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
 
->Challenges:
->  + This section took me a lot of time each time when I have to restart the agent after writing in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
-I later realized that it was due to me using Agent v5 and not upgrading it. Once I upgraded everything started working smoothly.
->  + I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them It got configured correctly.
+>Challenges:  + Configuring MySQL consumed a lot of time whenever I had to restart the agent after editing mysql.yaml file; the agent used to become completely unresponsive and I couldn't connect to the datadog server until I uninstalled the agent and reapeated the above steps.
+I later realized that this happened because I was Agent v5 without upgrading it. Once I upgraded everything started working smoothly.
+>  + I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them it worked fine.
 
 
 >Question. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
