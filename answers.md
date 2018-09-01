@@ -140,16 +140,14 @@ I later realized that this happened because I was using Agent v5 without upgradi
 
 >Question. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
 
-    Adding a custom check was quiet simple I just had to create two files in the following two folders. One important thing is to give the same name to both files.
-
-       a. /etc/datadog-agent/conf.d
-       b. /etc/datadog-agent/checks.d
-
+Adding a custom check was quiet simple I just had to create two files in the following two folders. One important thing is to give the same name to both files.
+    *   a. /etc/datadog-agent/conf.d
+    *   b. /etc/datadog-agent/checks.d
 a. In conf.d I created a file name custom-check.yaml
 
 ![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
 
-    and simply added the following `code`
+and simply added the following `code`
 
        ```     
         init_config:
