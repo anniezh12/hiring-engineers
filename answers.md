@@ -7,9 +7,10 @@
 >what is virtualization?
 >It is a process of running different Operating Systems on your PC(reffered to as host) while the resulting VM manager can be used to create as many virtual boxes as needed and are reffered to as guests.
 
-```
-In a simple way we can define process of virtualization as 'Virtual Machine' is a guest house which can have one or many guest rooms, where a guest(any Operating System) can perform as if its his home.
-```
+
+>In a simple way we can define process of virtualization as 'Virtual Machine' is a guest house which can have one or many guest rooms,
+ where a guest(any Operating System) can perform as if its his home.
+
 ###                                   Setting Virtual Machine and linux Operating System
 To install Oracle Virtual Machine on my PC, simply go to this link
 https://www.virtualbox.org/wiki/Dowlaods
