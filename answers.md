@@ -32,7 +32,7 @@ Once the datadog account was created, I used menu to select `Agent` (you could a
 
 ![Agent install step 1](images/collecting-metrics/agent-install-step1.png)
 
-Based on my OS I selected Ubuntu (select one based on your operating system).
+Based on my OS, I selected Ubuntu (select one based on your operating system).
 
 ![Agent install step 2](images/collecting-metrics/agent-install-step2.png)
 
@@ -46,7 +46,7 @@ Once installed, I used the command given in step 2 to update/upgrade the `Agent`
 
  At this stage I navigated to the datadog account where I was able to observe the dashboard (which was provided as a link in the Events tab of the menu options)
 
- ![datadog dashboard](images/collecting-metrics/datadog-dashboard.png)
+ ![datadog dashboard](images/collecting-metrics/dd-dashboard.png)
 
  ```
                     IMPORTANT TERMINAL COMMANDS
@@ -58,7 +58,7 @@ Once installed, I used the command given in step 2 to update/upgrade the `Agent`
 
 >  Question. Add tags in the Agent config file and show us a screen shot of your host and its tags on the Host Map page in Datadog.
 
-In the terminal switch to super user(since I installed Datadog agent as super user i.e su)
+In the terminal, I switched to super user mode (since I installed Datadog agent as super user i.e su)
  ``` ~$ sudo su [and provide password]
  ~$ cd /etc/datadog-agent
  ```
