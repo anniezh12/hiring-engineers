@@ -131,7 +131,7 @@ Following image showed `MySQL` graph on the dashboard
 
 ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
 
-`Challenges:`
+>Challenges:
 >  + This section took me a lot of time each time when I have to restart the agent after writing in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
 I later realized that it was due to me using Agent v5 and not upgrading it. Once I upgraded everything started working smoothly.
 >  + I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them It got configured correctly.
