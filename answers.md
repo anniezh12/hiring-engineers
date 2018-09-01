@@ -1,5 +1,23 @@
 
+###                Virtualization
 
+>What is Oracle Virtual Machine?
+>Oracle VM is a free and open source solution to run other operating system in your PC.
+
+>what is virtualization?
+>It is a process of running different Operating Systems on your PC(reffered to as host) while the resulting VM manager can be used to create as many virtual boxes as needed and are reffered to as guests.
+
+```
+In a simple way we can define process of virtualization as 'Virtual Machine' is a guest house which can have one or many guest rooms, where a guest(any Operating System) can perform as if its his home.
+```
+###                                   Setting Virtual Machine and linux Operating System
+To install Oracle Virtual Machine on my PC, simply go to this link
+https://www.virtualbox.org/wiki/Dowlaods
+I chose `Windows Hosts` since my PC has Windows OS. Then I followed the following steps(Please note I am installing this for the sake of showing how I did this earlier my VM already has virtual box that I used to complete this lab)
+
+1. Once download is complete
+2. ![create vm]()
+3. !
 
 ###                                   COLLECTING METRICS
 
@@ -9,40 +27,39 @@ Agent: Datadog Agent: v6.3.3
 
 ####          Setting Up Datadog Account and installing Agent on the local machine
 
-I first created a datadog account using this link https://app.datadoghq.com/signup
-Once datadog account has been created I used menu to select "Agent"(you could also use this link https://app.datadoghq.com/account/settings#agent)
+I first created a datadog account using this link https://app.datadoghq.com/signup.
+Once the datadog account was created, I used menu to select `Agent` (you could also use this link https://app.datadoghq.com/account/settings#agent)
 
 ![Agent install step 1](images/collecting-metrics/agent-install-step1.png)
 
-I picked Ubuntu(pick one depending on your system)
+Based on my OS I selected Ubuntu (select one based on your operating system).
 
 ![Agent install step 2](images/collecting-metrics/agent-install-step2.png)
 
-Copy and paste the "One-Step Install" command in your terminal root directory and press <Enter>
-It will take some time to install it on your system, once Installed
-Get the other command to upgrade it which is specified in step 2.
+I then copied and pasted the "One-Step Install" command in the terminal's root directory and executed the command.
+It took some time to install the `Agent` on my system.
+Once installed, I used the command given in step 2 to update/upgrade the `Agent`.
 
 #### Image showing Datadog Agent installed and running
 
  ![Image showing Datadog Agent](images/collecting-metrics/ddagent.png)  
 
- Now navigate to the datadog account where you can see the dashboard[link] appear in Events[menu option]
+ At this stage I navigated to the datadog account where I was able to observe the dashboard (which was provided as a link in the Events tab of the menu options)
 
  ![datadog dashboard](images/collecting-metrics/datadog-dashboard.png)
 
  ```
                     IMPORTANT TERMINAL COMMANDS
         1. sudo datadog-agent status # will show current status of the Agent
-        2. systemctl start datadog-agent # will start the Agent
-        3. systemctl stop datadog-agent # will stop the Agent
+        2. sudo systemctl start datadog-agent # will start the Agent
+        3. sudo systemctl stop datadog-agent # will stop the Agent
 
 ```
 
 >  Question. Add tags in the Agent config file and show us a screen shot of your host and its tags on the Host Map page in Datadog.
 
 In the terminal switch to super user(since I installed Datadog agent as super user i.e su)
- ```
- ~$ sudo su [and provide password]
+ ``` ~$ sudo su [and provide password]
  ~$ cd /etc/datadog-agent
  ```
  Once in the datadog-agent I opened the  datadog.yaml file
