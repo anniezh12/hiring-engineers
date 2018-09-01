@@ -62,32 +62,30 @@ In the terminal, I switched to super user mode (since I installed Datadog agent 
  ``` ~$ sudo su [and provide password]
  ~$ cd /etc/datadog-agent
  ```
- Once in the datadog-agent I opened the  datadog.yaml file
-
+ Once in the datadog-agent directory, I opened the  datadog.yaml file using `Nano`(Command-Line text editor)
 
 `root@aniqa/etc/datadog-agent://# nano datadog.yaml`
 
-I scrolled down all the way where I was able to to see `tags:` and I
-uncomment it. Here one can add tags(predefined or custom), ideally key-value pair like `region:east` etc
+I located the `tags:` in the yaml file and changed it from comment to a command (by removing the `#` character).
+Here, I added additional tags (note predefined or custom tags can be added ideally key-value pairs like `region:east` etc).
 
 ![assigning tags in YAML file](images/collecting-metrics/tag-assignment-datadog-yaml.png)
 
-I then checked datadog account by navigating to
-`infrastructure/Host Map` and you can see all the tags that I just defined in `yaml` file there.
+I then checked datadog account by navigating to the
+`infrastructure/Host Map` within the menu options and could see all the tags that I had defined in `yaml` file previously.
 
 ![tags on datadog account](images/collecting-metrics/tagsOnHostMap.png)
 
-> Challenges: I was unable to see the tags after configuring them in the yaml file initially but after a couple of attempts they appeared.
-
+> Challenges: I was unable to see the tags after configuring them in the yaml file initially but after a couple of attempts they appeared. This possibly happened due to the delay in the datadog Agent system check.
 
 > Question. Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database?
 
-#####  Mysql Installation in the terminal
+#####  MySQL installation in the terminal
 
-1. sudo su [provide password]     
-2. $ sudo apt-get install mysql
-3. $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
-4. Inside datadog account I navigated to `integrations` menu option and select `mysql` It shows all the steps to integrate mysql in the local environment.
+* $ sudo su [provide password]     
+* $ sudo apt-get install mysql
+* $ sudo netstat -tap | grep mysql  # instead of step 2 you can use this command to either start an already existing database or create a new one
+* Inside datadog account I navigated to `integrations` menu option and select `mysql` It shows all the steps to integrate mysql in the local environment.
 
 
              a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
@@ -100,7 +98,7 @@ I then checked datadog account by navigating to
 
 
 
-7.  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
+*  Add the configuration block to /etc/datadog-agent/conf.d to start gathering metrics
 
               init_config:
 
@@ -119,7 +117,7 @@ I then checked datadog account by navigating to
 
              ![mysql yaml file](images/collecting-metrics/mysql-yaml.png)
 
-8. I restarted the agent and check the status. I was able to see that
+* I restarted the agent and check the status. I was able to see that
        mysql has been integrated.
 
 
