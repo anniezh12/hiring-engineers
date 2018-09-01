@@ -369,7 +369,7 @@ after saving the above code simply run the following command in your terminal
     and was represented with red color.
 
 
-#                                       Monitoring Data
+###                                       Monitoring Data
 
    Create a new Metric Monitor that watches the average of your custom metric (my_metric) and will alert if it’s above the following values over the past 5 minutes:
            Warning threshold of 500
@@ -387,128 +387,138 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
 ```
 ![adding alert threshold](images/monitoring-data/selecting-values.png)
 
-  ### Please configure the monitor’s message so that it will:
+>Question:- Please configure the monitor’s message so that it will:
          Send you an email whenever the monitor triggers.
          Create different messages based on whether the monitor is in an Alert, Warning, or No Data state.
          Include the metric value that caused the monitor to trigger and host ip when the Monitor triggers an Alert state.
          When this monitor sends you an email notification, take a screenshot of the email that it sends you.
 
-    For this section I used predefined tags like {{#is_warning}}Appropriate message{{/#is_warning}}
+    For this section I used predefined tags like `{{#is_warning}}appropriate message/s goes here{{/#is_warning}}``
 
 ![monitor messages](images/monitoring-data/monitor-msgs.png)
 
  Moreover, I also selected my name in `Notify your team`
 
 ![monitor](images/monitoring-data/monitor.png)
-    We can see this monitor by going to monitors and clicking the monitor you want to see
+
+I was then able to see this monitor by going to `Monitors` menu tab and by selecting this monitor.
 
 ![monitors list](images/monitoring-data/monitor-list.png)
 
+Alerts can also be seen under `Events` as well.
+
 ![monitor events](images/monitoring-data/monitor-events.png)
+
 
 ![monitor ui list](images/monitoring-data/monitor-ui-list.png)
 
-    Moreover, Alerts will also appear on the dashboard.
+Alerts showed on dashboard.
 
 ![warnings on dashboard](images/monitoring-data/dashboard-showing-warning.png)
 
 
-    ### Bonus Question: Since this monitor is going to alert pretty often, you don’t want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
+> Bonus Question: Since this monitor is going to alert pretty often, you don’t want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
+a. One that silences it from 7pm to 9am daily on M-F,
 
-    >  a. One that silences it from 7pm to 9am daily on M-F,
-          Simply go to Monitors and click on "Manage Downtime"
-              ![downtime](images/monitoring-data/downtime-selected.png)
+Simply go to Monitors and click on "Manage Downtime"
 
-          once saved it can be viewed by selecting it in the manage downtime window as shown in the following picture
+![downtime](images/monitoring-data/downtime-selected.png)
+
+Once saved, could be viewed by selecting it in the manage downtime window as shown in the following picture
+
 ![downtime schedule](images/monitoring-data/downtime-scheduled.png)
 
 
-      >b. And one that silences it all day on Sat-Sun.
+>b. And one that silences it all day on Sat-Sun.
 
-         I created another downtime event as followed,
+     I created another downtime event as shown in the following image:
 
 ![weekend downtime](images/monitoring-data/downtime-weekend.png)
 
-          I had to do some calculations since my Friday downtime will start at 7:pm and will stay until Saturday morning so I started the weekend downtime from 9:00 am Saturday and specified a duration of 48 hours.
+  I had to do some calculations since my Friday downtime will start at 7:pm and will stay until Saturday morning so I started the weekend downtime from 9:00 am Saturday and specified a duration of 48 hours.
 
 ![downtime weekend][images/monitoring-data/downtime-weekend-2.png]
-               -----------------------------------
 
-      >c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
-          I received email notification
+>c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
+
+    I then recieved email notification as shown in the following images.
 
 ![email notification](images/monitoring-data/email-notification-of-daily-downtime.png)
+
 ![email notification downtime](images/monitoring-data/email-notification-of-weekend-downtime.png)
+
 ![email notification downtime active](images/monitoring-data/active-downtime.png)
+
 ![email waring alert](images/monitoring-data/warning-alert.png)
+
 ![daily monitor showing last fifteen minutes](images/monitoring-data/daily-monitor-showing-last-fifteen-minutes-before-downtime.png)
 
 
 ###                                   Collecting APM Data:
 
-    Given the following Flask app (or any Python/Ruby/Go app of your choice) instrument this using Datadog’s APM solution.
+>Question:- Given the following Flask app (or any Python/Ruby/Go app of your choice) instrument this using Datadog’s APM solution.
 
     I created a rails app in my directory and followed the documentation provided by datadog
 
-         $ rails new DataDogApmRails # will create a rails app
+         `$ rails new DataDogApmRails` # will create a rails app
 
-    The Ruby APM tracer sends trace data through the Datadog Agent
+    The `Ruby APM tracer` sends trace data through the Datadog Agent
 
-   1. Go to datadog account and navigate to APM, choose docs and select framework for example I chose 'Rails'
+   1. Go to datadog account and navigate to `APM` menu tab, choose docs and select framework for example I chose 'Rails'
+
 ![configuring apm](images/collecting-apm-data/configuring-apm-using-rails.png)
 
    I followed the instruction as follows
 
-   a. added "gem 'ddtrace'" in the gem file and then install it using " $ bundle install"
+   a. added `gem 'ddtrace'` in the gem file and then install it using ` $ bundle install`
 
-   b. created a datadog-tracer.rb file in  config/initializers, and put the following code in it
+   b. created a `datadog-tracer.rb` file in  `config/initializers`, and put the following code in it
+
       ```
          Rails.configuration.datadog_trace = {
            auto_instrument: true,
            auto_instrument_redis: true,
            default_service: 'my-rails-app',
-           tracer: Datadog.tracer
-
-         }
+           tracer: Datadog.tracer  }
       ```   
 
 ![tracer.rb](images/collecting-apm-data/datadog-tracer-rb-file.png)
 
-        Code can be seen in the 'DataDogApmRails/initializers/datadog-tracer.rb' file
+Code can be seen in the `DataDogApmRails/initializers/datadog-tracer.rb` file
 
-    c. In datadog-agent/datadog.yaml remove the comment from
+    c. Inside `datadog-agent/datadog.yaml`, I made `comment to command` by removing the `#` characcter as follows
 
-     ```
+```
               apm_config:
               enabled:true
-     ```
+```
 
   2.  I also created a controller using
-     ```
-      $ rails g controller welcome
-    ```
-      which provided me a controllers/welcome_controller.rb and a views folder(since rails is an MVC(Model View Controller) framework)
 
+```
+      $ rails g controller welcome
+```
+      which provided me a `controllers/welcome_controller.rb` and a `views` folder(since rails is an MVC (Model View Controller) framework)
       I defined index action in the welcome_controller.rb and then created a related index.html.erb file with some simple text in it.
 
-     Related code is in 'DataDogApmRails/app/controllers/welcome_controller.rb' file
+> Related code is in `DataDogApmRails/app/controllers/welcome_controller.rb` file
 
-  3. Also defined routes in [DataDogApmRails/config/routes.rb]
-     Finally I ran the rails server by '$ rails s'  and went back to my datadog account to see the changes.
+3. I also defined routes in `DataDogApmRails/config/routes.rb`.
+Finally I ran the rails server by '$ rails s'  and went back to my datadog account to see the changes.
 
 ![apm services](images/collecting-apm-data/apm-service.png) #shows the services
+
 ![apm traces](images/collecting-apm-data/apm-traces.png)  #shows the traces
+
 ![apm service map](images/collecting-apm-data/apm-service-map.png) #shows the service map
+
 ![welcome-index page](images/collecting-apm-data/welcome-index.png)
 
-  4. To test how APM shows errors, I added 2 errors inside config/routes.rb file and the APM Monitor started showing it
+4. To test how APM shows errors, I added 2 errors inside config/routes.rb file and the APM Monitor started showing it
 
 ![apm showing errors](images/collecting-apm-data/apm-showing-errors.png)
 
  Moreover, we can also export APM graphs to any monitor of our choice by selecting the settings button and choosing export
-
-
-
 >Question:-    What is the difference between a Service and a Resource?
 
   A service is a set of processes that do the same job. while a resource is a particular action for a service. A service is self-contained and independently deployed and developed software, which can provide services using different resources.
