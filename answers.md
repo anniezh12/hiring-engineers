@@ -164,10 +164,9 @@ Got an error message in my custom-check.py file
 > Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
 
 b. In checks.d I created a file custom-check.py
-  the checks inherits from the AgentCheck class, I also import random class to be able to generate a random number to be passed through metric, "my_metric"
+  the checks inherits from the AgentCheck class, I also import random class to be able to generate a random number to be passed through metric, `my_metric`
 
-```
-                from checks import AgentCheck
+```             from checks import AgentCheck
                 import random
                 class HelloCheck(AgentCheck):
                     def check(self, instance):
@@ -200,9 +199,8 @@ Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I
 
 To see my custom check I ran the following command in terminal
 
+```     $ sudo -u dd-agent -- datadog-agent check custom-check
 ```
-     $ sudo -u dd-agent -- datadog-agent check custom-check
- ```
 
 ![command to see custom checks](images/collecting-metrics/running-custom-check.png)
 
@@ -277,7 +275,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
 
                   graphs = [{
 
-# The following code will produce a graph with the average free Memory space and willpresent it in timeseries
+   # The following code will produce a graph with the average free Memory space and willpresent it in timeseries
 
                             "definition" => {
                           "events" => [],
@@ -285,7 +283,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
                           "viz" => "timeseries"
                       },"title" => "Average Memory Free "},
 
- # The following code will produce a graph with the average free Memory space and will present it in heatmap
+   # The following code will produce a graph with the average free Memory space and will present it in heatmap
 
                   {
 
@@ -296,7 +294,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
                     },
                     "title" => "Average Memory Free In heatmap"},
 
-  # The following code will produce a graph to show my_metric(custom check) in  timeseries, what is asked in the question
+    # The following code will produce a graph to show my_metric(custom check) in  timeseries, what is asked in the question
 
                     {
                       "definition" => {
@@ -305,7 +303,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
                           "viz" => "timeseries"
                       },
                       "title" => "My custom Metric my_metric"},
-# The following code will produce a graph showing mysql performance cpu time over time anomaly function
+    # The following code will produce a graph showing mysql performance cpu time over time anomaly function
                       {
                         "definition" => {
                             "events" => [],
@@ -314,7 +312,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
                         },
                         "title" => "Database Metric with an anomaly function "},
 
-  # The following code will produce a graph showing my_metric by applying rollup function to show the average of event in the past hour in a timeseries graph
+     # The following code will produce a graph showing my_metric by applying rollup function to show the average of event in the past hour in a timeseries graph
 
                       {
                         "definition" => {
@@ -334,7 +332,6 @@ After looking at related datadogs api endpoints(which can help create, update, d
                   dog.create_dashboard(title, description, graphs, template_variables)
 
                 end
-
 ```          
 
 after saving the above code simply run the following command in your terminal
