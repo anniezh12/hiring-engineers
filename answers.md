@@ -121,7 +121,6 @@ Which were given as follows:
 6. I restarted the `Agent` to check the status. I was able to see that
        mysql had been integrated.
 
-
 ![mysql configured](images/collecting-metrics/mysql-configured-correctly.png)
 
  7. Similarly, in the datadog account I could see installed `mysql` as shown in the following image.
@@ -129,15 +128,16 @@ Which were given as follows:
 ![mysql ](images/collecting-metrics/mysql-installed.png)
 
 Following image showed `MySQL` graph on the dashboard
+
 ![dashboard after mysql configured](images/collecting-metrics/dashboard-after-mysql-integration.png)
 
-      >Challenges:
-        >  + This section took me a lot of time each time when I have to restart the agent after writing in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
-          I later realized that it was due to me using Agent v5 and not upgrading it. Once I upgraded everything started working smoothly.
-          >+ I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them It got configured correctly.
+`Challenges:`
+>  + This section took me a lot of time each time when I have to restart the agent after writing in mysql.yaml file, the agent became  completely unresponsive and I was unable to connect with the datadog server until I had to uninstall the agent and redo everything again.
+I later realized that it was due to me using Agent v5 and not upgrading it. Once I upgraded everything started working smoothly.
+>  + I was not defining the tags in mysql.yaml file since I thought they were optional and it was giving me errors but when I added them It got configured correctly.
 
 
-    >Question. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
+>Question. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
 
     Adding a custom check was quiet simple I just had to create two files in the following two folders. One important thing is to give the same name to both files.
 
