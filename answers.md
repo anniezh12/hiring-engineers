@@ -222,19 +222,22 @@ I created a ruby gem for this problem using Bundler inside my hiring-engineers r
 
        a. bundle gem codingruby
        b. once a gem is being created I added the following two gems in the Gemfile
+
              `gem 'dogapi'`
-             `gem 'dogstatsd-ruby'``
-        $ bundle install   #will install the above gems
-       c. Inside lib folder I have now a file codingruby.rb where I will place my `code`.
+             `gem 'dogstatsd-ruby'`
 
+         then I ran `$ bundle install` to install the above gems.
 
-      Go to your Datadog account and navigate to Settings/API(https://app.datadoghq.com/account/settings#api), where you can see an Api key but you have to create an Application key by specifying a name for your app in order to make Api calls
+       c. Inside `lib` folder I had a file called `codingruby.rb` where I placed my `code`.
+
+      I then went back to the Datadog account and navigated to `Settings/API` (https://app.datadoghq.com/account/settings#api), where I could see an `Api key` but I still had to create an `Application key` which I accomplished by specifying a name for the `app` in order to make Api calls
 
 ![specifying api key](images/visualizing-data/api_app_key.png)
 
 After looking at related datadogs api endpoints(which can help create, update, delete and query timeboards).
 
  And it has the following arguments
+ ```
    - title [required]
    - description [required]
    - graph [optional]
@@ -246,16 +249,17 @@ After looking at related datadogs api endpoints(which can help create, update, d
             - prefix[optional]
             - default[optional]
     with a post request which is being made to `https://api.datadoghq.com/api/v1/dash`
-
+```
   I create a ruby file and added the following `code` in it
 
 ![calling datadog api](images/visualizing-data/ruby-file-api-call.png)
 
-     In Order to create a timeboard I consulted the following resource link
+In Order to create a timeboard I consulted the following resource link
 
-     https://docs.datadoghq.com/integrations/mysql/#metrics (A resource for finding mysql functions)
+https://docs.datadoghq.com/integrations/mysql/#metrics (A resource for finding mysql functions)
 
-   Related code is in [code/timeboard-creation.rb]
+>Related code is in [code/timeboard-creation.rb]
+
 ```
                 require "codingruby/version"
                 require 'rubygems'
@@ -275,7 +279,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
 
                   graphs = [{
 
-   # The following code will produce a graph with the average free Memory space and willpresent it in timeseries
+   # The following code will produce a graph with the average free Memory space and will present it in the form of time series
 
                             "definition" => {
                           "events" => [],
@@ -334,15 +338,15 @@ After looking at related datadogs api endpoints(which can help create, update, d
                 end
 ```          
 
-after saving the above code simply run the following command in your terminal
+After saving the above code I simply ran the following command in the terminal to execute ruby code which will make a call to the `Datadog API` to create a timeboard.
 
-      >$ rspec lib/codingruby.rb
+    `$ rspec lib/codingruby.rb`
 
-  Now go back to datadog agent and you can see a new timeboard.
+Now I went back to my datadog account and could see a new timeboard.
 
 ![Timeboard created](images/visualizing-data/timeboard-created.png)
 
-![ruby code to create timeboard](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
+![ruby code to createtimeboard](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
 
 ![custom metric](images/visualizing-data/getting-custom-metric.png)     
 
