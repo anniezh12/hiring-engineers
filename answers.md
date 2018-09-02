@@ -504,8 +504,9 @@ Code can be seen in the `DataDogApmRails/initializers/datadog-tracer.rb` file
 ```
       $ rails g controller welcome
 ```
-      which provided me a `controllers/welcome_controller.rb` and a `views` folder(since rails is an MVC (Model View Controller framework)
-      I defined `index action` in the `welcome_controller.rb` and then created a related view action file `index.html.erb` file with some simple text in it.
+
+which provided me a `controllers/welcome_controller.rb` and a `views` folder(since rails is an MVC (Model View Controller framework)
+I defined `index action` in the `welcome_controller.rb` and then created a related view action file `index.html.erb` file with some simple text in it.
 
 > Related code is in `DataDogApmRails/app/controllers/welcome_controller.rb` file
 
