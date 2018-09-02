@@ -340,49 +340,56 @@ https://docs.datadoghq.com/integrations/mysql/#metrics (A resource for finding m
 
 After saving the above code I simply ran the following command in the terminal to execute ruby code which will make a call to the `Datadog API` to create a timeboard.
 
-    `$ rspec lib/codingruby.rb`
+`                 $ rspec lib/codingruby.rb`
 
 Now I went back to my datadog account and could see a new timeboard.
 
 ![Timeboard created](images/visualizing-data/timeboard-created.png)
 
-![ruby code to createtimeboard](images/visualizing-data/custom-timeboard-created-from-ruby-file.png)
+![ruby code to createtimeboard](images/visualizing-data/timeboard-from-ruby-file.png)
 
 ![custom metric](images/visualizing-data/getting-custom-metric.png)     
 
-![rollup function]([images/visualizing-data/rollup-function-applied-to-custom-metric.png)
+![rollup function]([images/visualizing-data/rollup-function.png)
 
 
 
     a. Set the Timeboard's timeframe to the past 5 minutes
 
     This part is quite easy, just go to dashboard and move the graph pointer to 5 minutes before.
-    ![Timeboard created]([images/visualizing-data/timeboard-five-min-ago.png]
+
+![Timeboard created](images/visualizing-data/timeboard-five-min-ago.png)
 
     b. Take a snapshot of this graph and use the @ notation to send it to yourself.
 
     Now I clicked one of the graph and clicked camera, wrote a message, used @myemail@yahoo.com and pressed enter. I recieved a full board, with the graph I picked, more visibly.
 
 ![email](images/visualizing-data/email-sending.png)
+
 ![email 2](images/visualizing-data/email-showing-graph.png)
 
-  Bonus Question: What is the Anomaly graph displaying?
+>Bonus Question: What is the Anomaly graph displaying?
     Anomaly detection is a strategy to see whats normal and whats not.
-    Any abnormal changes whether they are high in value or low are shown on anomaly graph as red. Anomaly detection functions evaluate on the basis of trends and set a range on the basis of past events(range shown in light blue area). For example have a look at ![](images/visualizing-data/anomaly-summary.png)
-    we can clearly spot that the mysql performance cpu time against system time was most of the time out of normal range(In light blue)
+    Any abnormal changes whether they are high in value or low are shown on anomaly graph as red. Anomaly detection functions evaluate on the basis of trends and set a range on the basis of past events (range shown in light blue area). For example have a look at
+
+![](images/visualizing-data/anomaly-summary.png)
+
+    we can clearly spot that the mysql performance cpu time against system time was most of the time out of normal range (in light blue)
     and was represented with red color.
 
 
 ###                                       Monitoring Data
 
-   Create a new Metric Monitor that watches the average of your custom metric (my_metric) and will alert if it’s above the following values over the past 5 minutes:
+>Question:- Create a new Metric Monitor that watches the average of your custom metric (my_metric) and will alert if it’s above the following values over the past 5 minutes:
            Warning threshold of 500
            Alerting threshold of 800
            And also ensure that it will notify you if there is No Data for this query over the past 10m.
 
-Ans.  This was an easy part all I did to go to dashboard and clicked settings button on the graph showing my_metric and chose
-  "create monitor" option a new window popped up,
-![creating monitor](images/monitoring-data/create-monitor.png)  
+Ans.  This was an easy part all I did to go to dashboard and selected settings button on the graph showing `my_metric` and chose
+  `create monitor` option. And a new window popped up,
+
+![creating monitor](images/monitoring-data/create-monitor.png)
+
 ```
   I added values
          a. Alert threshold : 800
@@ -397,7 +404,7 @@ Ans.  This was an easy part all I did to go to dashboard and clicked settings bu
          Include the metric value that caused the monitor to trigger and host ip when the Monitor triggers an Alert state.
          When this monitor sends you an email notification, take a screenshot of the email that it sends you.
 
-    For this section I used predefined tags like `{{#is_warning}}appropriate message/s goes here{{/#is_warning}}``
+    For this section I used predefined tags like `{{#is_warning}}appropriate message/s goes here{{/#is_warning}}`
 
 ![monitor messages](images/monitoring-data/monitor-msgs.png)
 
@@ -424,7 +431,7 @@ Alerts showed on dashboard.
 > Bonus Question: Since this monitor is going to alert pretty often, you don’t want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
 a. One that silences it from 7pm to 9am daily on M-F,
 
-Simply go to Monitors and click on "Manage Downtime"
+Simply go to Monitors and click on `Manage Downtime`
 
 ![downtime](images/monitoring-data/downtime-selected.png)
 
