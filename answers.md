@@ -442,17 +442,17 @@ Once saved, could be viewed by selecting it in the manage downtime window as sho
 
 >b. And one that silences it all day on Sat-Sun.
 
-     I created another downtime event as shown in the following image:
+I created another downtime event as shown in the following image:
 
 ![weekend downtime](images/monitoring-data/downtime-weekend.png)
 
-  I had to do some calculations since my Friday downtime will start at 7:pm and will stay until Saturday morning so I started the weekend downtime from 9:00 am Saturday and specified a duration of 48 hours.
+I had to do some calculations since my Friday downtime will start at 7:pm and will stay until Saturday morning so I started the weekend downtime from 9:00 am Saturday and specified a duration of 48 hours.
 
-![downtime weekend][images/monitoring-data/downtime-weekend-2.png]
+![downtime weekend](images/monitoring-data/downtime-weekend-2.png)
 
 >c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
 
-    I then recieved email notification as shown in the following images.
+I then recieved email notification as shown in the following images.
 
 ![email notification](images/monitoring-data/email-notification-of-daily-downtime.png)
 
@@ -465,15 +465,15 @@ Once saved, could be viewed by selecting it in the manage downtime window as sho
 ![daily monitor showing last fifteen minutes](images/monitoring-data/daily-monitor-showing-last-fifteen-minutes-before-downtime.png)
 
 
-###                                   Collecting APM Data:
+###                                   COLLECTING APM DATA:
 
 >Question:- Given the following Flask app (or any Python/Ruby/Go app of your choice) instrument this using Datadog’s APM solution.
 
-    I created a rails app in my directory and followed the documentation provided by datadog
+I created a rails app in my directory and followed the documentation provided by datadog
 
          `$ rails new DataDogApmRails` # will create a rails app
 
-    The `Ruby APM tracer` sends trace data through the Datadog Agent
+The `Ruby APM tracer` sends trace data through the Datadog Agent
 
    1. Go to datadog account and navigate to `APM` menu tab, choose docs and select framework for example I chose 'Rails'
 
@@ -485,13 +485,13 @@ Once saved, could be viewed by selecting it in the manage downtime window as sho
 
    b. created a `datadog-tracer.rb` file in  `config/initializers`, and put the following code in it
 
-      ```
+```
          Rails.configuration.datadog_trace = {
            auto_instrument: true,
            auto_instrument_redis: true,
            default_service: 'my-rails-app',
            tracer: Datadog.tracer  }
-      ```   
+```   
 
 ![tracer.rb](images/collecting-apm-data/datadog-tracer-rb-file.png)
 
@@ -504,13 +504,13 @@ Code can be seen in the `DataDogApmRails/initializers/datadog-tracer.rb` file
               enabled:true
 ```
 
-  2.  I also created a controller using
+  2.  I also created a `controller` using
 
 ```
       $ rails g controller welcome
 ```
-      which provided me a `controllers/welcome_controller.rb` and a `views` folder(since rails is an MVC (Model View Controller) framework)
-      I defined index action in the welcome_controller.rb and then created a related index.html.erb file with some simple text in it.
+      which provided me a `controllers/welcome_controller.rb` and a `views` folder(since rails is an MVC (Model View Controller framework)
+      I defined `index action` in the `welcome_controller.rb` and then created a related view action file `index.html.erb` file with some simple text in it.
 
 > Related code is in `DataDogApmRails/app/controllers/welcome_controller.rb` file
 
@@ -534,9 +534,6 @@ Finally I ran the rails server by '$ rails s'  and went back to my datadog accou
 
   A service is a set of processes that do the same job. while a resource is a particular action for a service. A service is self-contained and independently deployed and developed software, which can provide services using different resources.
 
+###                                          Recommended use of Datadog
 
-
-
-#                                           Recommended use of Datadog
-                                           --------------------------
-    I am currently working with disabled kids and the one thing I would love to have is the ability to monitor the causes of what I observe. For example, sometimes a kid will have many seizures in a day while other days they will have no seizures. Similarly with their behaviors, I would love to monitor the food they consume and the noise level affecting their behaviors. So proper measures can be taken.             
+>I am currently working with disabled kids and the one thing I would love to have is the ability to monitor the causes of what I observe. For example, sometimes a kid will have many seizures in a day while other days they will have no seizures. Similarly with their behaviors, I would love to monitor the food they consume and the noise level affecting their behaviors. So proper measures can be taken.             
