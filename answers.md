@@ -145,7 +145,7 @@ Adding a custom check was quiet simple I just had to create two files in the fol
     *   b. /etc/datadog-agent/checks.d
 a. In conf.d I created a file name custom-check.yaml
 
-![custom checks in yaml](images/collecting-metrics/custom-check.yaml)
+![custom checks in yaml](images/collecting-metrics/custom-check-yaml.png)
 
 and simply added the following code
 
@@ -159,18 +159,19 @@ and simply added the following code
 
 Got an error message in my custom-check.py file
 
-![mysql configured](images/collecting-metrics/custom-check-error-later-version)
+![mysql configured](images/collecting-metrics/custom-check-error-later-version.png)
 
 > Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
 
-b. In checks.d I created a file custom-check.py
-  the checks inherits from the AgentCheck class, I also import random class to be able to generate a random number to be passed through metric, `my_metric`
+b. In `checks.d` I created a file `custom-check.py`
+  the checks inherits from the `AgentCheck class`, I also import random class to be able to generate a random number to be passed through metric `my_metric`
 
-```             from checks import AgentCheck
-                import random
-                class HelloCheck(AgentCheck):
-                    def check(self, instance):
-                        self.gauge('my_metric',random.randint(0,1000))
+```            
+ from checks import AgentCheck
+      import random
+      class HelloCheck(AgentCheck):
+      def check(self, instance):
+      self.gauge('my_metric',random.randint(0,1000))
 ```
 ![custom checks python file](images/collecting-metrics/custom-check-py-file.png)
 
