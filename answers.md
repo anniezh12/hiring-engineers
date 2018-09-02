@@ -514,7 +514,7 @@ Finally I ran the rails server by '$ rails s'  and went back to my datadog accou
 
 Following image shows the services:
 
-![apm services](images/collecting-apm-data/apm-service.png)
+![apm services](images/collecting-apm-data/apm-services.png)
 
 Following image shows the traces:
 
