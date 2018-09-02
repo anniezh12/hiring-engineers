@@ -144,9 +144,6 @@ Adding a custom check was quiet simple I just had to create two files in the fol
     *   a. /etc/datadog-agent/conf.d
     *   b. /etc/datadog-agent/checks.d
 a. In conf.d I created a file name custom-check.yaml
-
-![custom checks in yaml](images/collecting-metrics/custom-check-yaml.png)
-
 and simply added the following code
 
 ```     
@@ -159,7 +156,7 @@ and simply added the following code
 
 Got an error message in my custom-check.py file
 
-![mysql configured](images/collecting-metrics/custom-check-error-later-version.png)
+![error in custom check file](images/collecting-metrics/custom-check-error.png)
 
 > Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
 
@@ -200,8 +197,7 @@ Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I
 
 To see my custom check I ran the following command in terminal
 
-```     $ sudo -u dd-agent -- datadog-agent check custom-check
-```
+`$ sudo -u dd-agent -- datadog-agent check custom-check`
 
 ![command to see custom checks](images/collecting-metrics/running-custom-check.png)
 
@@ -351,17 +347,15 @@ Now I went back to my datadog account and could see a new timeboard.
 
 ![custom metric](images/visualizing-data/getting-custom-metric.png)     
 
-![rollup function]([images/visualizing-data/rollup-function.png)
+![rollup function](images/visualizing-data/rollup-function.png)
 
+>Question:- Set the Timeboard's timeframe to the past 5 minutes
 
-
-    a. Set the Timeboard's timeframe to the past 5 minutes
-
-    This part is quite easy, just go to dashboard and move the graph pointer to 5 minutes before.
+This part is quite easy, just go to dashboard and move the graph pointer to 5 minutes before.
 
 ![Timeboard created](images/visualizing-data/timeboard-five-min-ago.png)
 
-    b. Take a snapshot of this graph and use the @ notation to send it to yourself.
+>Question:- Take a snapshot of this graph and use the @ notation to send it to yourself.
 
     Now I clicked one of the graph and clicked camera, wrote a message, used @myemail@yahoo.com and pressed enter. I recieved a full board, with the graph I picked, more visibly.
 
@@ -379,15 +373,14 @@ Now I went back to my datadog account and could see a new timeboard.
     and was represented with red color.
 
 
-###                                       Monitoring Data
+###                                       MONITORING DATA
 
 >Question:- Create a new Metric Monitor that watches the average of your custom metric (my_metric) and will alert if it’s above the following values over the past 5 minutes:
            Warning threshold of 500
            Alerting threshold of 800
            And also ensure that it will notify you if there is No Data for this query over the past 10m.
 
-Ans.  This was an easy part all I did to go to dashboard and selected settings button on the graph showing `my_metric` and chose
-  `create monitor` option. And a new window popped up,
+This was an easy part all I did to go to dashboard and selected settings button on the graph showing `my_metric` and chose `create monitor` option. And a new window popped up,
 
 ![creating monitor](images/monitoring-data/create-monitor.png)
 
@@ -395,7 +388,7 @@ Ans.  This was an easy part all I did to go to dashboard and selected settings b
   I added values
          a. Alert threshold : 800
          b. Warning threshold: 500
-         c. chose "Notify"if data is missing for more than "10"(added 10 in the textbox) minutes  
+         c. I chose "Notify"if data is missing for more than "10"(added 10 in the textbox) minutes  
 ```
 ![adding alert threshold](images/monitoring-data/selecting-values.png)
 
@@ -405,7 +398,7 @@ Ans.  This was an easy part all I did to go to dashboard and selected settings b
          Include the metric value that caused the monitor to trigger and host ip when the Monitor triggers an Alert state.
          When this monitor sends you an email notification, take a screenshot of the email that it sends you.
 
-    For this section I used predefined tags like `{{#is_warning}}appropriate message/s goes here{{/#is_warning}}`
+For this section I used predefined tags like `{{#is_warning}}appropriate message/s goes here{{/#is_warning}}`
 
 ![monitor messages](images/monitoring-data/monitor-msgs.png)
 
@@ -430,7 +423,8 @@ Alerts showed on dashboard.
 
 
 > Bonus Question: Since this monitor is going to alert pretty often, you don’t want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
-a. One that silences it from 7pm to 9am daily on M-F,
+
+>a. One that silences it from 7pm to 9am daily on M-F,
 
 Simply go to Monitors and click on `Manage Downtime`
 
@@ -472,19 +466,19 @@ I then recieved email notification as shown in the following images.
 
 I created a rails app in my directory and followed the documentation provided by datadog
 
-         `$ rails new DataDogApmRails` # will create a rails app
+`$ rails new DataDogApmRails`  will create a rails app
 
 The `Ruby APM tracer` sends trace data through the Datadog Agent
 
-   1. Go to datadog account and navigate to `APM` menu tab, choose docs and select framework for example I chose 'Rails'
+   1. In my datadog account, I navigate to `APM` menu tab, choose docs and select framework for example I chose 'Rails'
 
 ![configuring apm](images/collecting-apm-data/configuring-apm-using-rails.png)
 
-   I followed the instruction as follows
+   I followed the instruction as follows:
 
-   a. added `gem 'ddtrace'` in the gem file and then install it using ` $ bundle install`
+   a. I added `gem 'ddtrace'` in the `DataDogApmRails/Gemfile` and then installed it using `$ bundle install`
 
-   b. created a `datadog-tracer.rb` file in  `config/initializers`, and put the following code in it
+   b. I created a `datadog-tracer.rb` file in  `DataDogApmRails/config/initializers`, and placed the following code in it
 
 ```
          Rails.configuration.datadog_trace = {
@@ -505,7 +499,7 @@ Code can be seen in the `DataDogApmRails/initializers/datadog-tracer.rb` file
               enabled:true
 ```
 
-  2.  I also created a `controller` using
+  2.  I also created a `controller` with the name `welcome` using
 
 ```
       $ rails g controller welcome
@@ -518,11 +512,19 @@ Code can be seen in the `DataDogApmRails/initializers/datadog-tracer.rb` file
 3. I also defined routes in `DataDogApmRails/config/routes.rb`.
 Finally I ran the rails server by '$ rails s'  and went back to my datadog account to see the changes.
 
-![apm services](images/collecting-apm-data/apm-service.png) #shows the services
+Following image shows the services:
 
-![apm traces](images/collecting-apm-data/apm-traces.png)  #shows the traces
+![apm services](images/collecting-apm-data/apm-service.png)
 
-![apm service map](images/collecting-apm-data/apm-service-map.png) #shows the service map
+Following image shows the traces:
+
+![apm traces](images/collecting-apm-data/apm-traces.png)  
+
+Following image shows the map:
+
+![apm service map](images/collecting-apm-data/apm-service-map.png)
+
+Following image shows the the `WelcomeController#index` which was just created:
 
 ![welcome-index page](images/collecting-apm-data/welcome-index.png)
 
@@ -531,10 +533,10 @@ Finally I ran the rails server by '$ rails s'  and went back to my datadog accou
 ![apm showing errors](images/collecting-apm-data/apm-showing-errors.png)
 
  Moreover, we can also export APM graphs to any monitor of our choice by selecting the settings button and choosing export
+
 >Question:-    What is the difference between a Service and a Resource?
+>A service is a set of processes that do the same job. while a resource is a particular action for a service. A service is self-contained and independently deployed and developed software, which can provide services using different resources.
 
-  A service is a set of processes that do the same job. while a resource is a particular action for a service. A service is self-contained and independently deployed and developed software, which can provide services using different resources.
-
-###                                          Recommended use of Datadog
+###                                          RECOMMENDED USE OF DATADOG SERVICES
 
 >I am currently working with disabled kids and the one thing I would love to have is the ability to monitor the causes of what I observe. For example, sometimes a kid will have many seizures in a day while other days they will have no seizures. Similarly with their behaviors, I would love to monitor the food they consume and the noise level affecting their behaviors. So proper measures can be taken.             
