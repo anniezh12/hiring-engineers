@@ -2,19 +2,22 @@
 ###                Virtualization
 
 >What is Oracle Virtual Machine?
->Oracle VM is a free and open source solution to run other operating system in your PC.
+>Oracle VM is a free and open source solution to run other operating systems in your PC.
 
->what is virtualization?
->It is a process of running different Operating Systems on your PC(reffered to as host) while the resulting VM manager can be used to create as many virtual boxes as needed and are reffered to as guests.
+>What is virtualization?
+>It is a process of running different Operating Systems on your PC (referred to as a host) while the resulting VM manager can be used to create as many virtual boxes as needed. Theses are referred to as guests.
 
+>A simple way to define the process of virtualization as a 'Virtual Machine' is a guest house which can have one or many guest rooms,
+ where a guest (any Operating System) can live/perform as if they are in their home.
 
->In a simple way we can define process of virtualization as 'Virtual Machine' is a guest house which can have one or many guest rooms,
- where a guest(any Operating System) can perform as if its his home.
+###                                   SETTING UP THE Virtual Machine MANAGER TO USE LINUX OS
 
-###                                   Setting Virtual Machine and linux Operating System
-To install Oracle Virtual Machine on my PC, simply go to this link
-https://www.virtualbox.org/wiki/Dowlaods
-I chose `Windows Hosts` since my PC has Windows OS. Then I followed the following steps(Please note I am installing this for the sake of showing how I did this earlier my VM already has virtual box that I used to complete this lab)
+To install the `Oracle Virtual Machine` on my PC I went to the following link
+https://www.virtualbox.org/wiki/Dowlaods.
+
+Then I chose `Windows Hosts` since my PC has Windows OS. Then I followed the following steps:
+
+>Please note I am installing this for the sake of showing how I did this earlier, where I not only installed Virtual Machine but also install Ubuntu OS.  
 
 1. Once download is complete
 ![vm](images/oracle-vm/create-vm-test.png)
@@ -70,7 +73,7 @@ After selecting the file as shown in the above image hit `start`
 12. I tried to install ruby by using `$ sudo apt-get install ruby`, it didn't install `Ruby` instead a system update was suggested. I then updated the system by `$ sudo apt-get update`.
 Once system updated I installed ruby with no difficulty using `$ sudo apt-get install ruby`.
 
-![Ruby installed ](images/oracle-vm/ruby-installed-correctly(1).png)
+![Ruby installed ](images/oracle-vm/ruby-installed.png)
 
 
 
