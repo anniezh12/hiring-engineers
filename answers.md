@@ -167,8 +167,10 @@ Steps for MySQL installation in the terminal are as follows:
 4. Inside datadog account I navigated to `integrations` menu option and selected `mysql`. It showed all the steps to integrate `mysql` in the local environment.
 Which were given as follows:
 
+             a. mysql> sudo mysql -e "CREATE USER 'datadog'@'localhost' IDENTIFIED BY 'passord'
+![mysql configuration steps](images/collecting-metrics/mysql-steps.png)
 
-             a. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
+             b. mysql> GRANT REPLICATION CLIENT ON *.* TO  'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;
 
              b. mysql> GRANT PROCESS ON *.* TO 'datadog'@'localhost';
 
