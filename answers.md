@@ -19,56 +19,57 @@ Then I chose `Windows Hosts` since my PC has Windows OS. Then I followed the fol
 
 >Please note I am installing this for the sake of showing how I did this earlier, where I not only installed Virtual Machine but also installed the Ubuntu OS.  
 
-1. Once the download is complete
+1. Once the download was complete
 ![vm](images/oracle-vm/create-vm-test.png)
 2.
 ![vm](images/oracle-vm/vm-size.png)
 3.
 ![vm](images/oracle-vm/vm-hard.png)
- and hit `create` button
+ and then I hit the `create` button.
 
-4. Select dynamically allocate and hit `Next`
+4. I selected `dynamically allocate` and hit `Next`
 
 ![vm](images/oracle-vm/dynamic-storage.png)
 
-keep default option of `test` to save the hard drive and hit `create`
-5. Virtual box created, but I can see other Virtual boxes there as well since I was working in another 'virtual box'  where I did all my assignment. But for the purpose of explaining how I did this I created this virtal box 'test'.
+I kept the default option of `test` to save the hard drive and hit `create`.
+
+5. The virtual box was created. However, I could see the other virtual boxes as well since I had been working in another 'virtual box'  where I did all my assignment.
 
 ![vm](images/oracle-vm/vb-created.png)
 
-6. A new text box appeared prompting to select `virtual optical disk` file,
+6. A new text box appeared prompting me to select `virtual optical disk` file.
 
 ![vm](images/oracle-vm/vb-select-location.png)
 
- I selected browser icon and selected the file shown in the following image
+ I selected the `browser icon` and then selected the file shown in the following image.
 
  ![virtual-optical-disk-option](images/oracle-vm/virtual-optical-disk-option.png)
 
-After selecting the file as shown in the above image hit `start`
+After selecting the file, I hit `start`.
 
  ![virtual optical ](images/oracle-vm/vo-disk-start.png)
 
-7. Finally virtual box `test` was created with a welcome messages[Note: Since I was using Virtual Manager before creating this virtual box I didn't have to install `ubuntu` this time but I did install it when I first install virtual machine.]
+7. Finally the virtual box `test` was created with a welcome message ( Note: Since I was using Virtual Manager before creating this virtual box, I didn't have to install `ubuntu` at this time).
 
  ![Welcome ](images/oracle-vm/welcome.png)
 
-8. Following image shows virtual box `test` running
+8. The following image shows virtual box `test` running.
 
 ![virtual box test ](images/oracle-vm/vb-test.png)
 
-9. I can now select terminal and start working in it
+9. I could now select the terminal and start working in it
 
 ![selecting terminall ](images/oracle-vm/selecting-terminal.png)
 
-10. Inside terminal
+10. The following image shows the `Command Line Interface/terminal`
 
 ![terminal ](images/oracle-vm/terminal.png)
 
-11. At this point my system has nothing installed. I planned to work in Ruby, Rails and Atom (text editor) so I will install them using `sudo apt-get install name-of-software`
+11. At this point my system had nothing installed. I planned to work in Ruby, Rails and Atom (text editor) so I will install them using `sudo apt-get install name-of-software`
 
 ![checks for softwares](images/oracle-vm/checks-for-softwares.png)
 
->The easiest way to check if a system has a language installed is to use -software -v command (where v stands for version)
+>The easiest way to check if a system has a language installed is to use software -v command (where v stands for version)
 
 12. I tried to install ruby by using `$ sudo apt-get install ruby`, it didn't install `Ruby` instead a system update was suggested. I then updated the system by `$ sudo apt-get update`.
 Once system updated I installed ruby with no difficulty using `$ sudo apt-get install ruby`.
