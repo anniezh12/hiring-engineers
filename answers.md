@@ -25,20 +25,37 @@ I chose `Windows Hosts` since my PC has Windows OS. Then I followed the followin
  and hit `create` button
 
 4. Select dynamically allocate and hit `Next`
+
 ![vm](images/oracle-vm/dynamic-storage.png)
+
 keep default option of `test` to save the hard drive and hit `create`
 5. Virtual box created, but I can see other Virtual boxes there as well since I was working in another 'virtual box'  where I did all my assignment. But for the purpose of explaining how I did this I created this virtal box 'test'.
+
 ![vm](images/oracle-vm/vb-created.png)
 
 6. A new text box appeared prompting to select `virtual optical disk` file,
+
 ![vm](images/oracle-vm/vb-select-location.png)
- I selected browser icon and another window appeared
+
+ I selected browser icon and selected the file shown in the following image
+
  ![virtual-optical-disk-option](images/oracle-vm/virtual-optical-disk-option.png)
 
 After selecting the file as shown in the above image hit `start`
- ![virtual optical ](images/oracle-vm/vo-disk-option.png)
 
-7.
+ ![virtual optical ](images/oracle-vm/vo-disk-start.png)
+
+7. Finally virtual box `test` was created with a welcome messages[Note: Since I was using Virtual Manager before creating this virtual box I didn't have to install `ubuntu` this time but I did install it when I first install virtual machine]
+
+ ![Welcome ](images/oracle-vm/welcome.png)
+
+8. Following image shows virtual box `test` running
+
+![virtual box test ](images/oracle-vm/vb-test.png)
+
+9. I can now select terminal and start working
+![selecting terminall ](images/oracle-vm/selecting-terminal.png)
+
 
 
 
