@@ -19,7 +19,7 @@ Then I chose `Windows Hosts` since my PC has Windows OS. Then I followed the fol
 
 >Please note I am installing this for the sake of showing how I did this earlier, where I not only installed Virtual Machine but also installed the Ubuntu OS.  
 
-1. Once the download was complete
+1. Once the download was complete, I chose `New` to create a new Virtual Box named 'test'
 ![vm](images/oracle-vm/create-vm-test.png)
 2.
 ![vm](images/oracle-vm/vm-size.png)
@@ -75,6 +75,22 @@ After selecting the file, I hit `start`.
 Once system updated I installed ruby with no difficulty using `$ sudo apt-get install ruby`.
 
 ![Ruby installed ](images/oracle-vm/ruby-installed.png)
+
+###                            SETTING UP GIT IN THE LINUX TERMINAL
+
+In order to complete `Datadog Solutions Engineer` assignment, I had to configure Git in my new Virtual box
+that I just created in the above section.
+
+>What is GitHub? GitHub is an open source version control system (VCS) commonly known as Git. It is responsible for everything
+GitHub-related that happens locally on our computers
+
+I order to use Github one has to have an account on Github.
+I used `command line` command to install git in my local environment using
+
+ `$ apt-get install git`
+ 
+
+
 
 
 
