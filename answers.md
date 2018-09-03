@@ -17,7 +17,7 @@ https://www.virtualbox.org/wiki/Dowlaods
 I chose `Windows Hosts` since my PC has Windows OS. Then I followed the following steps(Please note I am installing this for the sake of showing how I did this earlier my VM already has virtual box that I used to complete this lab)
 
 1. Once download is complete
-2. ![create vm]()
+2. ![create vm](images/oracle-vm/file1.png)
 3. !
 
 ###                                   COLLECTING METRICS
