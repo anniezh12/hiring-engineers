@@ -10,7 +10,7 @@
 >A simple way to define the process of virtualization as a 'Virtual Machine' is a guest house which can have one or many guest rooms,
  where a guest (any Operating System) can live/perform as if they are in their home.
 
-###                                   SETTING UP THE Virtual Machine MANAGER TO USE LINUX OS
+###                                   SETTING UP THE VIRTUAL MACHINE MANAGER TO USE LINUX OS
 
 To install the `Oracle Virtual Machine` on my PC I went to the following link
 https://www.virtualbox.org/wiki/Dowlaods.
@@ -84,11 +84,12 @@ that I just created in the above section.
 >What is GitHub? GitHub is an open source version control system (VCS) commonly known as Git. It is responsible for everything
 GitHub-related that happens locally on our computers
 
-I order to use Github one has to have an account on Github.
-I used `command line` command to install git in my local environment using
+1. I order to use Github one has to have an account on Github.
+2. I used `command line` command to install git in my local environment using
 
  `$ apt-get install git`
- 
+ 3.
+
 
 
 
