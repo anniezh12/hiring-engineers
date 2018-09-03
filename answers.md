@@ -21,11 +21,13 @@ Then I chose `Windows Hosts` since my PC has Windows OS. Then I followed the fol
 
 1. Once the download was complete, I chose `New` to create a new Virtual Box named 'test'
 ![vm](images/oracle-vm/create-vm-test.png)
-2.
+
+2. I kept default settings in this part
 ![vm](images/oracle-vm/vm-size.png)
-3.
+
+3. I then hit the `create` button.
 ![vm](images/oracle-vm/vm-hard.png)
- and then I hit the `create` button.
+
 
 4. I selected `dynamically allocate` and hit `Next`
 
@@ -108,15 +110,17 @@ this link (https://help.github.com/articles/connecting-to-github-with-ssh/).
 
    ![git installation](images/oracle-vm/key-generated.png)
 
+I opened this key using `$ cat .ssh/id_rsa.pub`, it showed a long key that I copied to use in my github account.
+
 4. Next I started ssh agengt in the backgroung
 
 `$ eval "$(ssh-agent -s)"`
 
  ![git installation](images/oracle-vm/ssh-agent.png)
 
- 5. I then used this key and added it to my github account, now I was connected to GitHub and was abl
+ 5. I then used the key (from step 3) and added it to my github account, now I was connected to GitHub and was abl
  to do all the actions.
- I then clone the Datadog hiring-engineers repo in my terminal using `$ git clone repository-name`
+ I then clone the Datadog hiring-engineers repository in my terminal using `$ git clone repository-name`
  and started working on it.
 
 ###                                   COLLECTING METRICS
