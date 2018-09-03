@@ -199,10 +199,13 @@ I later realized that this happened because I was using Agent v5 without upgradi
 
 >Question. Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000?
 
-Adding a custom check was quiet simple I just had to create two files in the following two folders. One important thing is to give the same name to both files.
+Adding a custom check was quite simple, I just had to create two files in the following two folders.
+> One important consideration is to give the same name to both files.
+
     *   a. /etc/datadog-agent/conf.d
     *   b. /etc/datadog-agent/checks.d
-a. In conf.d I created a file name custom-check.yaml
+
+a. In conf.d I created a file named custom-check.yaml
 and simply added the following code
 
 ```     
@@ -213,14 +216,15 @@ and simply added the following code
 
 ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
 
-Got an error message in my custom-check.py file
+I then got an error message in my custom-check.py file
 
 ![error in custom check file](images/collecting-metrics/custom-check-error.png)
 
 > Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
 
 b. In `checks.d` I created a file `custom-check.py`
-  the checks inherits from the `AgentCheck class`, I also import random class to be able to generate a random number to be passed through metric `my_metric`
+  where the checks inherit from the `AgentCheck class`.
+   I also imported `random class` to generate a random number to be passed through the metric `my_metric`.
 
 ```            
  from checks import AgentCheck
@@ -231,18 +235,18 @@ b. In `checks.d` I created a file `custom-check.py`
 ```
 ![custom checks python file](images/collecting-metrics/custom-check-py-file.png)
 
-  Finally I stoped and then restarted the agent to see the checks being added
+  Finally I stopped and then restarted the agent to see the checks being added.
 
 ![custom checks seen by running datadog agent status](images/collecting-metrics/custom-check.png)
 
 
 >Question:- Change your check's collection interval so that it only submits the metric once every 45 seconds?
 
-We can add min_collection_interval to help define how often the check should be run globally by Agent. If it is greater than the interval time for the Agent collector, a line is added to the log stating that collection for this script was skipped. The default is 0 which means it’s collected at the same interval as the rest of the integrations on that Agent.
+We can add `min_collection_interval` to help define how often the check should be run globally by Agent. If it is greater than the interval time for the Agent collector, a line is added to the log stating that collection for this script was skipped. The default is 0 which means it is collected at the same interval as the rest of the integrations on that Agent.
 
 If the value is set to 45, it does not mean that the metric is collected every 45 seconds, but rather that it could be collected as often as every 45 seconds.
-In Agent 6, min_collection_interval must be added at an instance level, and can be configured individually for each instance.
-Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I am using Agent V6,for v5 its slightly different).
+In `Agent 6`, `min_collection_interval` must be added at an instance level, and can be configured individually for each instance.
+Simply add the min_collection_interval: 45 in the custom-check.yaml file (since I am using Agent V6,for v5 its slightly different).
 
 ```
       init_config:
@@ -254,7 +258,7 @@ Simply add the min_collection_interval: 45 in the custom-check.yaml file(since I
 
 ![changing interval](images/collecting-metrics/changing-interval.png)
 
-To see my custom check I ran the following command in terminal
+To see my custom check I ran the following command in the terminal.
 
 `$ sudo -u dd-agent -- datadog-agent check custom-check`
 
@@ -262,7 +266,8 @@ To see my custom check I ran the following command in terminal
 
 ![tags shown on datadog account](images/collecting-metrics/status-showing-tags-and-mysql.png)
 
-> Yes, since we can specify our custom collection interval in the YAML and not in the Python file.
+>Bonus Question:
+> Answer: Yes, since we can specify our custom collection interval in the YAML and not in the Python file.
 
 
 ###                               VISUALIZING DATA
@@ -274,19 +279,19 @@ Utilize the Datadog API to create a Timeboard that contains:
      b. Any metric from the Integration on your Database with the anomaly function applied.
      c. Your custom metric with the rollup function applied to sum up all the points for the past hour into one bucket
 
-I created a ruby gem for this problem using Bundler inside my hiring-engineers repo, created a ruby gem with the following command
+I created a ruby gem for this problem using `Bundler` inside my `hiring-engineers` repo using the following command
 
-       a. bundle gem codingruby
-       b. once a gem is being created I added the following two gems in the Gemfile
+a. `$ bundle gem codingruby`
+b. Once a gem was created, I added the following two gems in the Gemfile
 
-             `gem 'dogapi'`
-             `gem 'dogstatsd-ruby'`
+`gem 'dogapi'`
+`gem 'dogstatsd-ruby'`
 
-         then I ran `$ bundle install` to install the above gems.
+then I ran `$ bundle install` to install the above gems.
 
-       c. Inside `lib` folder I had a file called `codingruby.rb` where I placed my `code`.
+c. Inside `lib` folder I had a file called `codingruby.rb` where I placed my `code`.
 
-      I then went back to the Datadog account and navigated to `Settings/API` (https://app.datadoghq.com/account/settings#api), where I could see an `Api key` but I still had to create an `Application key` which I accomplished by specifying a name for the `app` in order to make Api calls
+I then went back to the Datadog account and navigated to `Settings/API` (https://app.datadoghq.com/account/settings#api), where I could see an `Api key` but I still had to create an `Application key` which I accomplished by specifying a name for the `app` in order to make Api calls
 
 ![specifying api key](images/visualizing-data/api_app_key.png)
 
