@@ -17,9 +17,9 @@ https://www.virtualbox.org/wiki/Dowlaods.
 
 Then I chose `Windows Hosts` since my PC has Windows OS. Then I followed the following steps:
 
->Please note I am installing this for the sake of showing how I did this earlier, where I not only installed Virtual Machine but also install Ubuntu OS.  
+>Please note I am installing this for the sake of showing how I did this earlier, where I not only installed Virtual Machine but also installed the Ubuntu OS.  
 
-1. Once download is complete
+1. Once the download is complete
 ![vm](images/oracle-vm/create-vm-test.png)
 2.
 ![vm](images/oracle-vm/vm-size.png)
