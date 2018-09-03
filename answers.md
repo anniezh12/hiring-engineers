@@ -17,8 +17,23 @@ https://www.virtualbox.org/wiki/Dowlaods
 I chose `Windows Hosts` since my PC has Windows OS. Then I followed the following steps(Please note I am installing this for the sake of showing how I did this earlier my VM already has virtual box that I used to complete this lab)
 
 1. Once download is complete
-2. ![create vm](images/oracle-vm/file1.png)
-3. !
+![vm](images/oracle-vm/create-vm.png)
+2.
+![vm](images/oracle-vm/vm-size.png)
+3.
+![vm](images/oracle-vm/vm-hard.png)
+ and hit `create` button
+
+4. Select dynamically allocate and hit `Next`
+![vm](images/oracle-vm/dynamic-storage.png)
+keep default option of `test` to save the hard drive and hit `create`
+5. Virtual box created, but I can see other Virtual boxes there as well since I was working in another 'virtual box'  where I did all my assignment. But for the purpose of explaining how I did this I created this virtal box 'test'.
+![vm](images/oracle-vm/vb-created.png)
+
+6. A new text box appeared prompting to select `virtual optical disk` file
+![vm](images/oracle-vm/vb-select-location.png)
+
+
 
 ###                                   COLLECTING METRICS
 
