@@ -63,14 +63,14 @@ After selecting the file as shown in the above image hit `start`
 
 11. At this point my system has nothing installed. I planned to work in Ruby, Rails and Atom (text editor) so I will install them using `sudo apt-get install name-of-software`
 
-![checks for softwares ](images/oracle-vm/checks-for-softwares.png)
+![checks for softwares](images/oracle-vm/checks-for-softwares.png)
 
 >The easiest way to check if a system has a language installed is to use -software -v command (where v stands for version)
 
 12. I tried to install ruby by using `$ sudo apt-get install ruby`, it didn't install `Ruby` instead a system update was suggested. I then updated the system by `$ sudo apt-get update`.
 Once system updated I installed ruby with no difficulty using `$ sudo apt-get install ruby`.
 
-![checks for softwares ](images/oracle-vm/ruby-installed-correctly.png)
+![Ruby installed ](images/oracle-vm/ruby-installed-correctly(1).png)
 
 
 
