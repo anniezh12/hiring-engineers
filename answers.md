@@ -30,8 +30,15 @@ keep default option of `test` to save the hard drive and hit `create`
 5. Virtual box created, but I can see other Virtual boxes there as well since I was working in another 'virtual box'  where I did all my assignment. But for the purpose of explaining how I did this I created this virtal box 'test'.
 ![vm](images/oracle-vm/vb-created.png)
 
-6. A new text box appeared prompting to select `virtual optical disk` file
+6. A new text box appeared prompting to select `virtual optical disk` file,
 ![vm](images/oracle-vm/vb-select-location.png)
+ I selected browser icon and another window appeared
+ ![virtual-optical-disk-option](images/oracle-vm/virtual-optical-disk-option.png)
+
+After selecting the file as shown in the above image hit `start`
+ ![virtual optical ](images/oracle-vm/vo-disk-option.png)
+
+7.
 
 
 
