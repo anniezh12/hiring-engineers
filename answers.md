@@ -291,13 +291,12 @@ then I ran `$ bundle install` to install the above gems.
 
 c. Inside `lib` folder I had a file called `codingruby.rb` where I placed my `code`.
 
-I then went back to the Datadog account and navigated to `Settings/API` (https://app.datadoghq.com/account/settings#api), where I could see an `Api key` but I still had to create an `Application key` which I accomplished by specifying a name for the `app` in order to make Api calls
+I then went back to the Datadog account and navigated to `Settings/API` (https://app.datadoghq.com/account/settings#api), where I could see an `Api key` but I still had to create an `Application key` which I accomplished by specifying a name for the `app` in order to make Api calls.
 
 ![specifying api key](images/visualizing-data/api_app_key.png)
 
-After looking at related datadogs api endpoints(which can help create, update, delete and query timeboards).
+After looking at related datadogs api endpoints (which can help create, update, delete and query timeboards), I found the following syntax to  make API calls.
 
- And it has the following arguments
  ```
    - title [required]
    - description [required]
@@ -311,7 +310,7 @@ After looking at related datadogs api endpoints(which can help create, update, d
             - default[optional]
     with a post request which is being made to `https://api.datadoghq.com/api/v1/dash`
 ```
-  I create a ruby file and added the following `code` in it
+I created a ruby file and added the following `code` in it
 
 ![calling datadog api](images/visualizing-data/ruby-file-api-call.png)
 
@@ -399,7 +398,7 @@ https://docs.datadoghq.com/integrations/mysql/#metrics (A resource for finding m
                 end
 ```          
 
-After saving the above code I simply ran the following command in the terminal to execute ruby code which will make a call to the `Datadog API` to create a timeboard.
+After saving the above code I simply ran the following command in the terminal to execute ruby code, which will make a call to the `Datadog API` to create a timeboard.
 
 `                 $ rspec lib/codingruby.rb`
 
@@ -421,7 +420,7 @@ This part is quite easy, just go to dashboard and move the graph pointer to 5 mi
 
 >Question:- Take a snapshot of this graph and use the @ notation to send it to yourself.
 
-    Now I clicked one of the graph and clicked camera, wrote a message, used @myemail@yahoo.com and pressed enter. I recieved a full board, with the graph I picked, more visibly.
+    Now I clicked one of the graphs, clicked camera, wrote a message, used `@myemail@yahoo.com` and pressed enter. I received a full board, with the graph I picked, more visibly.
 
 ![email](images/visualizing-data/email-sending.png)
 
@@ -429,11 +428,11 @@ This part is quite easy, just go to dashboard and move the graph pointer to 5 mi
 
 >Bonus Question: What is the Anomaly graph displaying?
     Anomaly detection is a strategy to see whats normal and whats not.
-    Any abnormal changes whether they are high in value or low are shown on anomaly graph as red. Anomaly detection functions evaluate on the basis of trends and set a range on the basis of past events (range shown in light blue area). For example have a look at
+    Any abnormal changes whether they are high in value or low are shown on the anomaly graph as red. Anomaly detection functions evaluate on the basis of trends and set a range on the basis of past events (range shown in light blue area). For example have a look at
 
 ![](images/visualizing-data/anomaly-summary.png)
 
-    we can clearly spot that the mysql performance cpu time against system time was most of the time out of normal range (in light blue)
+    we can clearly spot that the mysql performance cpu time against system time was out of normal range (in light blue) most of the time
     and was represented with red color.
 
 
@@ -444,7 +443,7 @@ This part is quite easy, just go to dashboard and move the graph pointer to 5 mi
            Alerting threshold of 800
            And also ensure that it will notify you if there is No Data for this query over the past 10m.
 
-This was an easy part all I did to go to dashboard and selected settings button on the graph showing `my_metric` and chose `create monitor` option. And a new window popped up,
+This part was simple. All I did was go to the dashboard and select the settings button on the graph showing `my_metric` and chose the `create monitor` option. A new window popped up,
 
 ![creating monitor](images/monitoring-data/create-monitor.png)
 
@@ -462,15 +461,15 @@ This was an easy part all I did to go to dashboard and selected settings button 
          Include the metric value that caused the monitor to trigger and host ip when the Monitor triggers an Alert state.
          When this monitor sends you an email notification, take a screenshot of the email that it sends you.
 
-For this section I used predefined tags like `{{#is_warning}}appropriate message/s goes here{{/#is_warning}}`
+For this section, I used predefined tags like `{{#is_warning}}appropriate message/s goes here{{/#is_warning}}`.
 
 ![monitor messages](images/monitoring-data/monitor-msgs.png)
 
- Moreover, I also selected my name in `Notify your team`
+ Moreover, I also selected my name in `Notify your team` (my name was the only option available).
 
 ![monitor](images/monitoring-data/monitor.png)
 
-I was then able to see this monitor by going to `Monitors` menu tab and by selecting this monitor.
+I was then able to see this monitor by going to the `Monitors` menu tab and selecting the monitor.
 
 ![monitors list](images/monitoring-data/monitor-list.png)
 
@@ -490,14 +489,13 @@ Alerts showed on dashboard.
 
 >a. One that silences it from 7pm to 9am daily on M-F,
 
-Simply go to Monitors and click on `Manage Downtime`
+I simply went to the `Monitors` (menu tab) and click on `Manage Downtime`. I then provided desired values as shown in the following image:
 
 ![downtime](images/monitoring-data/downtime-selected.png)
 
-Once saved, could be viewed by selecting it in the manage downtime window as shown in the following picture
+I then saved the above settings so they could be viewed by selecting it in the `manage downtime` window as shown in the following image:
 
 ![downtime schedule](images/monitoring-data/downtime-scheduled.png)
-
 
 >b. And one that silences it all day on Sat-Sun.
 
@@ -505,13 +503,13 @@ I created another downtime event as shown in the following image:
 
 ![weekend downtime](images/monitoring-data/downtime-weekend.png)
 
-I had to do some calculations since my Friday downtime will start at 7:pm and will stay until Saturday morning so I started the weekend downtime from 9:00 am Saturday and specified a duration of 48 hours.
+I had to do some calculations since my Friday downtime will start at `7:00 PM` and will stay until Saturday morning `9:00 AM`. I started the weekend downtime from `9:00` am Saturday and specified a duration of `48 hours`.
 
 ![downtime weekend](images/monitoring-data/downtime-weekend-2.png)
 
->c.  Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
+>c.  Make sure that your email is notified when you schedule the downtime and take a screen shot of that notification.
 
-I then recieved email notification as shown in the following images.
+I then received email notifications as shown in the following images:
 
 ![email notification](images/monitoring-data/email-notification-of-daily-downtime.png)
 
@@ -534,15 +532,15 @@ I created a rails app in my directory and followed the documentation provided by
 
 The `Ruby APM tracer` sends trace data through the Datadog Agent
 
-   1. In my datadog account, I navigate to `APM` menu tab, choose docs and select framework for example I chose 'Rails'
+   1. In my datadog account, I navigated to `APM` menu tab, chose `docs` and selected a framework. For example I chose `Rails`.
 
 ![configuring apm](images/collecting-apm-data/configuring-apm-using-rails.png)
 
-   I followed the instruction as follows:
+I implemented the instruction as follows:
 
-   a. I added `gem 'ddtrace'` in the `DataDogApmRails/Gemfile` and then installed it using `$ bundle install`
+a. I added `gem 'ddtrace'` in the `DataDogApmRails/Gemfile` and then installed it using `$ bundle install`
 
-   b. I created a `datadog-tracer.rb` file in  `DataDogApmRails/config/initializers`, and placed the following code in it
+b. I created a `datadog-tracer.rb` file in  `DataDogApmRails/config/initializers`, and placed the following code in it
 
 ```
          Rails.configuration.datadog_trace = {
@@ -554,38 +552,38 @@ The `Ruby APM tracer` sends trace data through the Datadog Agent
 
 ![tracer.rb](images/collecting-apm-data/datadog-tracer-rb-file.png)
 
-Code can be seen in the `DataDogApmRails/initializers/datadog-tracer.rb` file
+>Code can be seen in the DataDogApmRails/initializers/datadog-tracer.rb file
 
-    c. Inside `datadog-agent/datadog.yaml`, I made `comment to command` by removing the `#` characcter as follows
+c. Inside `datadog-agent/datadog.yaml`, I made `comment to command` by removing the `#` character as follows.
 
 ```
               apm_config:
               enabled:true
 ```
 
-  2.  I also created a `controller` with the name `welcome` using
+2.  I also created a `controller` with the name `welcome` using
 
 ```
       $ rails g controller welcome
 ```
 
-which provided me a `controllers/welcome_controller.rb` and a `views` folder(since rails is an MVC (Model View Controller framework)
-I defined `index action` in the `welcome_controller.rb` and then created a related view action file `index.html.erb` file with some simple text in it.
+which provided me a `controllers/welcome_controller.rb` and a `views` folder (since rails is an MVC, Model View Controller framework).  
+I then defined `index action` in the `welcome_controller.rb` and then created a related view action file named `index.html.erb` with some simple text in it.
 
-> Related code is in `DataDogApmRails/app/controllers/welcome_controller.rb` file
+> Code can be seen in the DataDogApmRails/app/controllers/welcome_controller.rb file
 
 3. I also defined routes in `DataDogApmRails/config/routes.rb`.
-Finally I ran the rails server by '$ rails s'  and went back to my datadog account to see the changes.
+Finally I ran the rails server by `$ rails s`  and went back to my datadog account to see the changes.
 
-Following image shows the services:
+The following image shows the `services`:
 
 ![apm services](images/collecting-apm-data/apm-services.png)
 
-Following image shows the traces:
+The following image shows the `traces`:
 
 ![apm traces](images/collecting-apm-data/apm-traces.png)  
 
-Following image shows the map:
+The following image shows the `map`:
 
 ![apm service map](images/collecting-apm-data/apm-service-map.png)
 
