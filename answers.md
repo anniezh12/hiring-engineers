@@ -87,14 +87,37 @@ GitHub-related that happens locally on our computers
 1. I order to use Github one has to have an account on Github.
 2. I used `command line` command to install git in my local environment using
 
- `$ apt-get install git`
- 3.
+ `$ sudo apt-get install git`
 
+ ![git installation](images/oracle-vm/git-installed.png)
 
+ checking git version
 
+ ![git installation](images/oracle-vm/git-version.png)
 
+3. After installing the git in my local environment, I had to connect it with the remote GitHub server which I accomplished by creating a `SSH key`, more info in
+this link (https://help.github.com/articles/connecting-to-github-with-ssh/).
 
+ `$ ssh-keygen -t rsa -b 4096 -C "my_email@example.com"`
 
+ I simply press enter for all the prompt e.g passphrase and location.
+
+  ![git installation](images/oracle-vm/creating-ssh-key.png)
+
+  The following image shows key generated
+
+   ![git installation](images/oracle-vm/key-generated.png)
+
+4. Next I started ssh agengt in the backgroung
+
+`$ eval "$(ssh-agent -s)"`
+
+ ![git installation](images/oracle-vm/ssh-agent.png)
+
+ 5. I then used this key and added it to my github account, now I was connected to GitHub and was abl
+ to do all the actions.
+ I then clone the Datadog hiring-engineers repo in my terminal using `$ git clone repository-name`
+ and started working on it.
 
 ###                                   COLLECTING METRICS
 
