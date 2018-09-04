@@ -332,13 +332,13 @@ b. Once a gem was created, I added the following two gems in the Gemfile
 
 then I ran `$ bundle install` to install the above gems.
 
-c. Inside `lib` folder I had a file called `codingruby.rb` where I placed my `code`.
+c. Inside `lib` folder I had a file named `codingruby.rb` where I placed my `code`.
 
-I then went back to the Datadog account and navigated to `Settings/API` (https://app.datadoghq.com/account/settings#api), where I could see an `Api key` but I still had to create an `Application key` which I accomplished by specifying a name for the `app` in order to make Api calls.
+I then went back to the Datadog account and navigated to `Settings/API` (https://app.datadoghq.com/account/settings#api), where I could see an `API key` but I still had to create an `Application key` which I accomplished by specifying a name for the `app` in order to make API calls.
 
 ![specifying api key](images/visualizing-data/api_app_key.png)
 
-After looking at related datadogs api endpoints (which can help create, update, delete and query timeboards), I found the following syntax to  make API calls.
+After looking at related Datadog's API endpoints (which can help create, update, delete and query timeboards), I found the following syntax to  make API calls.
 
  ```
    - title [required]
@@ -441,7 +441,7 @@ https://docs.datadoghq.com/integrations/mysql/#metrics (A resource for finding m
                 end
 ```          
 
-After saving the above code I simply ran the following command in the terminal to execute ruby code, which will make a call to the `Datadog API` to create a timeboard.
+After saving the above code I simply ran the following command in the terminal to execute ruby code, which made a call to the `Datadog API` to create a timeboard.
 
 `                 $ rspec lib/codingruby.rb`
 
@@ -457,7 +457,7 @@ Now I went back to my datadog account and could see a new timeboard.
 
 >Question:- Set the Timeboard's timeframe to the past 5 minutes
 
-This part is quite easy, just go to dashboard and move the graph pointer to 5 minutes before.
+This part was also quite easy, just went to dashboard and moved the graph pointer back 5 minutes on the time scale.
 
 ![Timeboard created](images/visualizing-data/timeboard-five-min-ago.png)
 
@@ -475,8 +475,7 @@ This part is quite easy, just go to dashboard and move the graph pointer to 5 mi
 
 ![](images/visualizing-data/anomaly-summary.png)
 
-    we can clearly spot that the mysql performance cpu time against system time was out of normal range (in light blue) most of the time
-    and was represented with red color.
+    We can clearly spot that the mysql performance cpu time against system time was out of normal range (in light blue) most of the time and was represented with red color.
 
 
 ###                                       MONITORING DATA
@@ -486,7 +485,7 @@ This part is quite easy, just go to dashboard and move the graph pointer to 5 mi
            Alerting threshold of 800
            And also ensure that it will notify you if there is No Data for this query over the past 10m.
 
-This part was simple. All I did was go to the dashboard and select the settings button on the graph showing `my_metric` and chose the `create monitor` option. A new window popped up,
+This part was simple. All I did was to go to the dashboard and selected the settings button on the graph showing `my_metric` and chose the `create monitor` option. A new window popped up,
 
 ![creating monitor](images/monitoring-data/create-monitor.png)
 
@@ -516,7 +515,7 @@ I was then able to see this monitor by going to the `Monitors` menu tab and sele
 
 ![monitors list](images/monitoring-data/monitor-list.png)
 
-Alerts can also be seen under `Events` as well.
+>Tip: Alerts can also be seen under `Events` as well.
 
 ![monitor events](images/monitoring-data/monitor-events.png)
 
@@ -532,7 +531,7 @@ Alerts showed on dashboard.
 
 >a. One that silences it from 7pm to 9am daily on M-F,
 
-I simply went to the `Monitors` (menu tab) and click on `Manage Downtime`. I then provided desired values as shown in the following image:
+I simply went to the `Monitors` (menu tab) and selected `Manage Downtime`. I then provided desired values as shown in the following image:
 
 ![downtime](images/monitoring-data/downtime-selected.png)
 
@@ -546,7 +545,7 @@ I created another downtime event as shown in the following image:
 
 ![weekend downtime](images/monitoring-data/downtime-weekend.png)
 
-I had to do some calculations since my Friday downtime will start at `7:00 PM` and will stay until Saturday morning `9:00 AM`. I started the weekend downtime from `9:00` am Saturday and specified a duration of `48 hours`.
+I had to do some calculations since my Friday downtime was to start at `7:00 PM` and would have continued till Saturday morning `9:00 AM`. So, I started the weekend downtime from `9:00` AM Saturday and specified a duration of `48 hours`.
 
 ![downtime weekend](images/monitoring-data/downtime-weekend-2.png)
 
