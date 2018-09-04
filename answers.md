@@ -645,4 +645,4 @@ The following image shows the `WelcomeController#index` which was just created:
 
 ###                                          RECOMMENDED USE OF DATADOG SERVICES
 
->I am currently working with disabled kids and the one thing I would love to have is the ability to monitor the causes of what I observe. For example, sometimes a kid will have many seizures in a day while other days they will have no seizures. Similarly with their behaviors, I would love to monitor the food they consume and the noise level affecting their behaviors. So proper measures can be taken.             
+>I am currently working with disabled kids and the one thing I would love to have is the ability to monitor the causes of what I observe. For example, sometimes a kid will have many seizures in a day while other days they will have no seizures. Similarly with their behaviors, I would love to monitor the food they consume and the noise level affecting their behaviors,  so proper measures can be taken. In this regard, Datadog Services could be used to leverage the collection of important parameters from the behavioral data collected from special needs kids.            
