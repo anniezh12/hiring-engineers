@@ -35,7 +35,7 @@ Then I chose `Windows Hosts` since my PC had Windows OS. Then I followed the fol
 
 I kept the default option of `test` and hit `create`.
 
-5. The virtual box was created. However, I could see the other virtual boxes as well since I had been working in another 'virtual box'  where I did all my assignment.
+5. The virtual box was created. However, I could see the other virtual boxes as well since I had been working in another 'virtual box'  where I did my entire assignment.
 
 ![vm](images/oracle-vm/vb-created.png)
 
@@ -43,38 +43,38 @@ I kept the default option of `test` and hit `create`.
 
 ![vm](images/oracle-vm/vb-select-location.png)
 
- I selected the `browser icon` and then selected the file shown in the following image.
+7. I selected the `browser icon` and then selected the file shown in the following image.
 
  ![virtual-optical-disk-option](images/oracle-vm/virtual-optical-disk-option.png)
 
-After selecting the file, I hit `start`.
+8. After selecting the file, I hit `start`.
 
  ![virtual optical ](images/oracle-vm/vo-disk-start.png)
 
-7. Finally the virtual box `test` was created with a welcome message ( Note: Since I was using Virtual Manager before creating this virtual box, I didn't have to install `ubuntu` at this time).
+9. Finally the virtual box `test` was created with a welcome message ( Note: Since I was using Virtual Manager before creating this virtual box, I didn't have to install `ubuntu` this time).
 
  ![Welcome ](images/oracle-vm/welcome.png)
 
-8. The following image shows virtual box `test` running.
+10. The following image shows the virtual box, `test`, running.
 
 ![virtual box test ](images/oracle-vm/vb-test.png)
 
-9. I could now select the terminal and start working in it.
+11. I could now select the terminal and start working in it.
 
 ![selecting terminall ](images/oracle-vm/selecting-terminal.png)
 
-10. The following image shows the `Command Line Interface/terminal`
+12. The following image shows the `Command Line Interface/terminal`.
 
 ![terminal ](images/oracle-vm/terminal.png)
 
-11. At this point my system had nothing installed. I planned to work in Ruby, Rails and Atom (text editor) so I will install them using `sudo apt-get install name-of-software`
+13. At this point, my system had nothing installed. I planned to work in Ruby, Rails and Atom (text editor) so the next step was to install these software using the terminal command `$ sudo apt-get install name-of-software`.
 
 ![checks for softwares](images/oracle-vm/checks-for-softwares.png)
 
->The easiest way to check if a system has a language installed is to use software -v command (where v stands for version)
+>Tip: The easiest way to check if a system has a perticular program installed is to use ** $ software -v** command (where v stands for version)
 
-12. I tried to install ruby by using `$ sudo apt-get install ruby`, it didn't install `Ruby` instead a system update was suggested. I then updated the system by `$ sudo apt-get update`.
-Once system updated I installed ruby with no difficulty using `$ sudo apt-get install ruby`.
+14. I tried to install ruby by using `$ sudo apt-get install ruby`, it didn't install `Ruby` instead a system update was suggested. I then updated the system by `$ sudo apt-get update`, which started the update process.
+Once the system updated, I installed ruby with no difficulty using `$ sudo apt-get install ruby`.
 
 ![Ruby installed ](images/oracle-vm/ruby-installed.png)
 
@@ -83,7 +83,8 @@ Once system updated I installed ruby with no difficulty using `$ sudo apt-get in
 In order to complete `Datadog Solutions Engineer` assignment, I had to configure Git in my new Virtual box
 that I just created in the above section.
 
->What is GitHub? GitHub is an open source version control system (VCS) commonly known as Git. It is responsible for everything
+>What is GitHub?
+>GitHub is an open source version control system (VCS) commonly known as Git. It is responsible for everything
 GitHub-related that happens locally on our computers
 
 1. I order to use Github one has to have an account on Github.
