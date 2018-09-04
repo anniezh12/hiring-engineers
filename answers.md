@@ -634,14 +634,14 @@ The following image shows the `WelcomeController#index` which was just created:
 
 ![welcome-index page](images/collecting-apm-data/welcome-index.png)
 
-4. To test how APM shows errors, I added 2 errors inside config/routes.rb file and the `APM Monitor` started showing it.
+4. To test how APM shows errors, I added 2 errors inside config/routes.rb file and the `APM Monitor` started showing them.
 
 ![apm showing errors](images/collecting-apm-data/apm-showing-errors.png)
 
 >Moreover, we can also export APM graphs to any monitor of our choice by selecting the settings button and choosing export
 
 >Question:-    What is the difference between a Service and a Resource?
->A service is a set of processes that do the same job. while a resource is a particular action for a service. A service is self-contained and independently deployed and developed software, which can provide services using different resources.
+>A service is a set of processes that do the same job while a resource is a particular action for a service. A service is self-contained and independently deployed and developed software, which can provide services using different resources.
 
 ###                                          RECOMMENDED USE OF DATADOG SERVICES
 
