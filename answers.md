@@ -2,7 +2,7 @@
 ###                Virtualization
 
 >What is Oracle Virtual Machine?
->Oracle VM is a free and open source solution to run other operating systems in your PC.
+>Oracle VM is a free and open source solution to run other operating systems on your PC.
 
 >What is virtualization?
 >It is a process of running different Operating Systems on your PC (referred to as a host) while the resulting VM manager can be used to create as many virtual boxes as needed. Theses are referred to as guests.
@@ -12,14 +12,14 @@
 
 ###                                   SETTING UP THE VIRTUAL MACHINE MANAGER TO USE LINUX OS
 
-To install the `Oracle Virtual Machine` on my PC I went to the following link
+To install the `Oracle Virtual Machine` on my PC, I went to the following link
 https://www.virtualbox.org/wiki/Dowlaods.
 
-Then I chose `Windows Hosts` since my PC has Windows OS. Then I followed the following steps:
+Then I chose `Windows Hosts` since my PC had Windows OS. Then I followed the following steps:
 
->Please note I am installing this for the sake of showing how I did this earlier, where I not only installed Virtual Machine but also installed the Ubuntu OS.  
+>Please note, I am installing this virtual machine/virtual box for the sake of showing how I did this earlier, where not only I installed the Virtual Machine but also the Ubuntu OS.  
 
-1. Once the download was complete, I chose `New` to create a new Virtual Box named 'test'
+1. Once the download was complete, I chose **New** to create a new Virtual Box named 'test'
 ![vm](images/oracle-vm/create-vm-test.png)
 
 2. I kept default settings in this part
