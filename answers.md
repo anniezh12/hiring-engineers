@@ -259,14 +259,14 @@ and simply added the following code
 
 ![custom checks in yaml file ](images/collecting-metrics/custom-check-yaml-file.png)
 
-I then got an error message in my custom-check.py file
+I then got an error message in my custom-check.py file.
 
 ![error in custom check file](images/collecting-metrics/custom-check-error.png)
 
 > Error message:- It appeared that the error was due to indentation of block which, once fixed, started showing me custom checks as expected.   
 
 b. In `checks.d` I created a file `custom-check.py`
-  where the checks inherit from the `AgentCheck class`.
+  where the checks were inherited from the `AgentCheck class`.
    I also imported `random class` to generate a random number to be passed through the metric `my_metric`.
 
 ```            
