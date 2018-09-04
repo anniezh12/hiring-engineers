@@ -28,12 +28,13 @@ Then I chose `Windows Hosts` since my PC had Windows OS. Then I followed the fol
 3. I then hit the `create` button.
 ![vm](images/oracle-vm/vm-hard.png)
 
-
 4. I selected `dynamically allocate` and hit `Next`.
 
 ![vm](images/oracle-vm/dynamic-storage.png)
 
 I kept the default option of `test` and hit `create`.
+
+![vm](images/oracle-vm/dynamic-storage.png)
 
 5. The virtual box was created. However, I could see the other virtual boxes as well since I had been working in another 'virtual box'  where I did my entire assignment.
 
@@ -57,7 +58,7 @@ I kept the default option of `test` and hit `create`.
 
 10. The following image shows the virtual box, `test`, running.
 
-![virtual box test ](images/oracle-vm/vb-test.png)
+![virtual box test ](images/oracle-vm/vb-test-running.png)
 
 11. I could now select the terminal and start working in it.
 
@@ -65,7 +66,7 @@ I kept the default option of `test` and hit `create`.
 
 12. The following image shows the `Command Line Interface/terminal`.
 
-![terminal ](images/oracle-vm/terminal.png)
+![terminal ](images/oracle-vm/vb-terminal.png)
 
 13. At this point, my system had nothing installed. I planned to work in Ruby, Rails and Atom (text editor) so the next step was to install these software using the terminal command `$ sudo apt-get install name-of-software`.
 
@@ -90,7 +91,7 @@ GitHub-related that happens locally on our computers.
 1. In order to use Github, one has to have an account on Github.
 2. I used terminal command to install git in my local environment using `$ sudo apt-get install git`.
 
- ![git installation](images/oracle-vm/git-installed.png)
+ ![git installation](images/oracle-vm/git-install.png)
 
  checking git version
 
