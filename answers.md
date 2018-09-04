@@ -19,21 +19,21 @@ Then I chose `Windows Hosts` since my PC had Windows OS. Then I followed the fol
 
 >Please note, I am installing this virtual machine/virtual box for the sake of showing how I did this earlier, where not only I installed the Virtual Machine but also the Ubuntu OS.  
 
-1. Once the download was complete, I chose **New** to create a new Virtual Box named 'test'
+1. Once the download was complete, I chose **New** to create a new Virtual Box named 'test'.
 ![vm](images/oracle-vm/create-vm-test.png)
 
-2. I kept default settings in this part
+2. I kept default settings in this part.
 ![vm](images/oracle-vm/vm-size.png)
 
 3. I then hit the `create` button.
 ![vm](images/oracle-vm/vm-hard.png)
 
 
-4. I selected `dynamically allocate` and hit `Next`
+4. I selected `dynamically allocate` and hit `Next`.
 
 ![vm](images/oracle-vm/dynamic-storage.png)
 
-I kept the default option of `test` to save the hard drive and hit `create`.
+I kept the default option of `test` and hit `create`.
 
 5. The virtual box was created. However, I could see the other virtual boxes as well since I had been working in another 'virtual box'  where I did all my assignment.
 
@@ -59,7 +59,7 @@ After selecting the file, I hit `start`.
 
 ![virtual box test ](images/oracle-vm/vb-test.png)
 
-9. I could now select the terminal and start working in it
+9. I could now select the terminal and start working in it.
 
 ![selecting terminall ](images/oracle-vm/selecting-terminal.png)
 
