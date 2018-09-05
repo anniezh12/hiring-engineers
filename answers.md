@@ -2,10 +2,12 @@
 ###                Virtualization
 
 >What is Oracle Virtual Machine?
+
 >Oracle VM is a free and open source solution to run other operating systems on your PC.
 
 >What is virtualization?
->It is a process of running different Operating Systems on your PC (referred to as a host) while the resulting VM manager can be used to create as many virtual boxes as needed. Theses are referred to as guests.
+
+>It is a process of running different Operating Systems on your PC (referred to as a host) while the resulting VM manager can be used to create as many virtual boxes as needed. These are referred to as guests.
 
 >A simple way to define the process of virtualization as a 'Virtual Machine' is a guest house which can have one or many guest rooms,
  where a guest (any Operating System) can live/perform as if they are in their home.
