@@ -117,10 +117,8 @@ I opened this key using `$ cat .ssh/id_rsa.pub`, it showed a long key that I cop
 
  ![git installation](images/oracle-vm/ssh-agent.png)
 
- 5. I then used the key (from step 3) and added it to my github account, now I was connected to GitHub and was abl
- to perform all the Git tasks.
- I then cloned the Datadog hiring-engineers repository in my terminal using `$ git clone repository-name`
- and started working on it.
+ 5. I then used the key (from step 3) and added it to my github account. In order to do this I went to my Github account and selected the `SSH and GPG keys` menu option. Next, I selected the `New SSH key` button which showed options to add a `Title` and a `Key`. I then gave a title to this key and pasted the key that I copied earlier from the terminal (step 3) and hit the `Add SSH Key` button. Now I was connected to GitHub and was able to perform all the Git tasks (ex. cloning, pushing etc).
+ I then cloned the Datadog hiring-engineers repository in my terminal using `$ git clone git@github.com:DataDog/hiring-engineers.git` and started working on it.
 
 ###                                   COLLECTING METRICS
 
