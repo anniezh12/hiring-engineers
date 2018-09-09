@@ -475,7 +475,7 @@ This part was also quite easy, just went to dashboard and moved the graph pointe
     Anomaly detection is a strategy to see whats normal and whats not.
     Any abnormal changes whether they are high in value or low are shown on the anomaly graph as red. Anomaly detection functions evaluate on the basis of trends and set a range on the basis of past events (range shown in light blue area). For example have a look at
 
-![](images/visualizing-data/anomaly-summary.png)
+![](images/visualizing-data/anamoly-summary.png)
 
     We can clearly spot that the mysql performance cpu time against system time was out of normal range (in light blue) most of the time and was represented with red color.
 
