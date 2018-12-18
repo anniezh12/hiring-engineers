@@ -113,7 +113,7 @@ this link (https://help.github.com/articles/connecting-to-github-with-ssh/).
 
    ![git installation](images/oracle-vm/key-generated.png)
 
-I opened this key using `$ cat .ssh/id_rsa.pub`, it showed a long key that I copied to use in my github account.
+I opened this key using `$ cat .ssh/id_rsa.pub` or `cat ~/.ssh/id_rsa.pub`, it showed a long key that I copied to use in my github account.
 
 4. Next I started ssh agent in the backgroung by using the command `$ eval "$(ssh-agent -s)"`.
 
